@@ -4,148 +4,616 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Transcend Frontiers</title>
+
+  <!-- Favicon: inline SVG aura orb -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%230e0f14'/%3E%3Cdefs%3E%3CradialGradient id='o' cx='55%25' cy='42%25' r='52%25'%3E%3Cstop offset='0%25' stop-color='%2323a6f5'/%3E%3Cstop offset='55%25' stop-color='%233a52e8' stop-opacity='.65'/%3E%3Cstop offset='100%25' stop-color='%230e0f14' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23o)'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
+    /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── Tokens ── */
+    :root {
+      --bg:     #f0f2f7;
+      --ink:    #14161c;
+      --muted:  #686e7a;
+      --dim:    #9ea6b5;
+      --rule:   #cdd2df;
+      --ghost:  #dde0eb;
+      --font: 'Hanken Grotesk', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #0a0a0a;
-      color: #f5f5f7;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    header {
-      padding: 24px 48px;
+    /* ── Grain texture overlay ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.038;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Orb ── */
+    @keyframes orb-drift {
+      0%   { transform: translate(0px,    0px)   scale(1);    }
+      33%  { transform: translate(20px,  -15px)  scale(1.05); }
+      66%  { transform: translate(-10px,  10px)  scale(0.97); }
+      100% { transform: translate(0px,    0px)   scale(1);    }
+    }
+
+    .orb-wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -52%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb {
+      width: 580px;
+      height: 580px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 38%,
+        rgba(35,166,245,0.82),
+        rgba(58,82,232,0.52) 45%,
+        transparent 72%);
+      filter: blur(80px);
+      animation: orb-drift 12s ease-in-out infinite;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 500;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #1d1d1f;
+      justify-content: space-between;
+      padding: 20px 64px;
+      background: rgba(240, 242, 247, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--rule);
     }
 
-    header .logo {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      color: #f5f5f7;
+    .nav-logo {
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
       text-decoration: none;
     }
 
-    header nav a {
-      color: #a1a1a6;
-      text-decoration: none;
-      font-size: 14px;
-      margin-left: 32px;
-      transition: color 0.2s;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
     }
 
-    header nav a:hover { color: #f5f5f7; }
+    .nav-links a {
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    .nav-links a:hover { color: var(--ink); }
 
-    main {
-      flex: 1;
+    .nav-links a.nav-pill {
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      padding: 8px 22px;
+      border-radius: 40px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a.nav-pill:hover { background: var(--ink); color: var(--bg); }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 80px 24px;
+      padding: 100px 40px 80px;
+      overflow: hidden;
     }
 
-    .hero-label {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+    .hero-inner { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #6e6e73;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(48px, 8vw, 96px);
-      font-weight: 700;
-      letter-spacing: -2px;
-      line-height: 1.05;
-      background: linear-gradient(135deg, #f5f5f7 0%, #a1a1a6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--muted);
       margin-bottom: 24px;
     }
 
-    .tagline {
-      font-size: clamp(16px, 2.5vw, 22px);
-      color: #6e6e73;
-      max-width: 560px;
-      line-height: 1.6;
-      margin-bottom: 48px;
+    #hero h1 {
+      font-family: var(--font);
+      font-weight: 800;
+      font-size: clamp(3rem, 6vw, 5rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 28px;
+      color: var(--ink);
     }
 
-    .cta {
+    .hero-tagline {
+      font-family: var(--font);
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 48px;
+      font-weight: 300;
+    }
+
+    .hero-cta {
       display: inline-block;
-      background: #f5f5f7;
-      color: #0a0a0a;
-      padding: 14px 32px;
-      border-radius: 980px;
-      font-size: 15px;
-      font-weight: 600;
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 40px;
+      border-radius: 40px;
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: background 0.22s, color 0.22s;
+    }
+    .hero-cta:hover { background: var(--ink); color: var(--bg); }
+
+    /* Hero bottom micro text */
+    .hero-foot {
+      position: absolute;
+      bottom: 40px;
+      left: 64px;
+      right: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 1;
     }
 
-    .cta:hover { opacity: 0.85; }
-
-    footer {
-      padding: 32px 48px;
-      border-top: 1px solid #1d1d1f;
+    .hero-foot-links,
+    .hero-foot-note {
+      font-family: var(--font);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
       display: flex;
-      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .hero-foot-links a {
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    .hero-foot-links a:hover { color: var(--ink); }
+
+    /* ── Shared section styles ── */
+    section:not(#hero) {
+      padding: 120px 64px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .section-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    /* Two-column editorial grid */
+    .editorial {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0 88px;
+      align-items: start;
+    }
+
+    .ed-left { padding-top: 6px; }
+
+    .ghost-num {
+      font-family: var(--font);
+      font-weight: 300;
+      font-size: 88px;
+      line-height: 1;
+      color: var(--ghost);
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+      user-select: none;
+    }
+
+    .sec-label {
+      font-family: var(--font);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .ed-right h2 {
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: var(--ink);
+    }
+
+    .ed-right p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 20px;
+    }
+    .ed-right p:last-child { margin-bottom: 0; }
+
+    .inline-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 40px 0;
+    }
+
+    /* ── Apps ── */
+    .app-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: 0 40px;
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .app-row:last-child { border-bottom: 1px solid var(--rule); }
+
+    .app-name {
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .app-desc {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .app-tag {
+      font-family: var(--font);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
+      white-space: nowrap;
+    }
+
+    /* ── Support topics ── */
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 36px 48px;
+      margin-bottom: 40px;
+    }
+
+    .topic h3 {
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .topic p {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: none;
+      margin: 0;
+    }
+
+    .topic a { color: var(--ink); }
+
+    /* Underline link style */
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--rule);
+      padding-bottom: 4px;
+      transition: border-color 0.2s;
+    }
+    .text-link:hover { border-color: var(--ink); }
+
+    /* ── Privacy editorial prose ── */
+    .privacy-prose h3 {
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-top: 48px;
+      margin-bottom: 14px;
+    }
+
+    .privacy-prose p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 640px;
+      margin-bottom: 16px;
+    }
+
+    .privacy-prose ul {
+      padding-left: 22px;
+      margin-bottom: 16px;
+    }
+
+    .privacy-prose li {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+
+    .privacy-prose a { color: var(--ink); }
+
+    .privacy-date {
+      font-family: var(--font);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 40px;
+      display: block;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 36px 64px;
+      border-top: 1px solid var(--rule);
+      display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    footer p {
-      font-size: 13px;
-      color: #6e6e73;
-    }
-
-    footer nav a {
-      color: #6e6e73;
+    footer p,
+    footer a {
+      font-family: var(--font);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
       text-decoration: none;
-      font-size: 13px;
-      margin-left: 24px;
-      transition: color 0.2s;
+      transition: color 0.18s;
+    }
+    footer a:hover { color: var(--ink); }
+
+    .footer-links { display: flex; gap: 28px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      nav { padding: 16px 28px; }
+      .nav-links a:not(.nav-pill) { display: none; }
+
+      #hero { padding: 80px 28px 72px; }
+      .hero-foot { left: 28px; right: 28px; bottom: 28px; }
+      .orb { width: 380px; height: 380px; }
+
+      section:not(#hero) { padding: 80px 28px; }
+
+      .editorial {
+        grid-template-columns: 1fr;
+        gap: 28px 0;
+      }
+
+      .ghost-num { font-size: 52px; }
+
+      footer { padding: 28px; flex-direction: column; align-items: flex-start; }
     }
 
-    footer nav a:first-child { margin-left: 0; }
-    footer nav a:hover { color: #a1a1a6; }
+    @media (max-width: 480px) {
+      #hero h1 { letter-spacing: -0.02em; }
+      .hero-foot-note { display: none; }
+      .topics { grid-template-columns: 1fr; gap: 28px; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <a class="logo" href="index.html">Transcend Frontiers</a>
-    <nav>
-      <a href="support.html">Support</a>
-      <a href="privacy.html">Privacy</a>
-    </nav>
-  </header>
+  <!-- ── Navigation ── -->
+  <nav>
+    <a class="nav-logo" href="#hero">Transcend Frontiers</a>
+    <div class="nav-links">
+      <a href="#apps">Apps</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#contact" class="nav-pill">Contact</a>
+    </div>
+  </nav>
 
-  <main>
-    <p class="hero-label">Welcome</p>
-    <h1>Transcend Frontiers</h1>
-    <p class="tagline">Pushing the boundaries of what's possible. Built for those who dare to go further.</p>
-    <a class="cta" href="support.html">Get in Touch</a>
-  </main>
 
+  <!-- ── Hero ── -->
+  <section id="hero">
+    <div class="orb-wrap"><div class="orb"></div></div>
+
+    <div class="hero-inner">
+      <h1>TRANSCEND<br>FRONTIERS</h1>
+    </div>
+  </section>
+
+
+  <!-- ── Apps ── -->
+  <section id="apps">
+    <div class="section-wrap">
+      <div class="editorial">
+        <div class="ed-left">
+          <div class="sec-label">Apps</div>
+        </div>
+        <div class="ed-right">
+          <h2>Our Applications</h2>
+
+          <div style="margin-top: 36px;">
+            <div class="app-row">
+              <div>
+                <div class="app-name">Halo</div>
+                <p class="app-desc">An angel number alert app for spiritual wellness enthusiasts who want to stay connected to meaningful number patterns throughout their day. Halo sends personalized notifications when your chosen angel numbers appear — like 11:11 or 888 — paired with dynamic messages tied to your intentions and numerology profile. Built for the manifestation and spirituality community who want a beautiful, intuitive tool for tracking the universe's signals.</p>
+              </div>
+              <div class="app-tag">iOS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Privacy ── -->
+  <section id="privacy">
+    <div class="section-wrap">
+      <div class="editorial">
+        <div class="ed-left">
+          <div class="sec-label">Privacy</div>
+        </div>
+        <div class="ed-right">
+          <h2>Privacy Policy</h2>
+          <span class="privacy-date">Last updated: May 14, 2026</span>
+
+          <div class="privacy-prose">
+            <p>This Privacy Policy describes how Transcend Frontiers ("we", "us", or "our") handles information in connection with our applications and services. We are committed to protecting your privacy.</p>
+
+            <h3>Information We Collect</h3>
+            <p>We may collect the following types of information:</p>
+            <ul>
+              <li>Information you provide directly, such as when you contact support</li>
+              <li>Usage data and analytics to improve our applications</li>
+              <li>Device information such as device type and operating system version</li>
+            </ul>
+
+            <h3>How We Use Your Information</h3>
+            <p>We use collected information to:</p>
+            <ul>
+              <li>Operate and improve our applications and services</li>
+              <li>Respond to support requests and communicate with you</li>
+              <li>Understand how our applications are used</li>
+              <li>Comply with applicable laws and regulations</li>
+            </ul>
+
+            <h3>Data Sharing</h3>
+            <p>We do not sell, trade, or rent your personal information to third parties. We may share data with trusted service providers who assist us in operating our applications, subject to confidentiality agreements.</p>
+
+            <h3>Data Retention</h3>
+            <p>We retain personal information only as long as necessary to provide our services or as required by law. You may request deletion of your data by contacting us.</p>
+
+            <h3>Security</h3>
+            <p>We implement reasonable technical and organizational measures to protect your information. However, no method of transmission over the internet is 100% secure.</p>
+
+            <h3>Children's Privacy</h3>
+            <p>Our applications are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us immediately.</p>
+
+            <h3>Changes to This Policy</h3>
+            <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by updating the date at the top of this page.</p>
+
+            <h3>Contact Us</h3>
+            <p>If you have questions about this Privacy Policy, please contact us via our <a href="#support">Support</a> section.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Contact ── -->
+  <section id="contact">
+    <div class="section-wrap">
+      <div class="editorial">
+        <div class="ed-left">
+          <div class="sec-label">Contact</div>
+        </div>
+        <div class="ed-right">
+          <h2>Get in Touch</h2>
+          <p>We read and respond to every message. Reach us directly at the address below.</p>
+          <br>
+          <a href="mailto:support@transcendfrontiers.com" class="text-link">
+            support@transcendfrontiers.com &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Footer ── -->
   <footer>
     <p>&copy; 2026 Transcend Frontiers. All rights reserved.</p>
-    <nav>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="support.html">Support</a>
-    </nav>
+    <div class="footer-links">
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#contact">Contact</a>
+    </div>
   </footer>
+
+
+  <script>
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 
 </body>
 </html>
