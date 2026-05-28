@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../../../css/shared.css">
 
   <style>
+    /* ── Navigation (fabric-lens-privacy-specific) ── */
     .nav-back {
       display: inline-flex;
       align-items: center;
@@ -27,6 +28,7 @@
     .nav-back:hover { color: var(--ink); }
     .nav-back svg { flex-shrink: 0; }
 
+    /* ── Main content ── */
     main {
       max-width: 720px;
       margin: 0 auto;
@@ -52,6 +54,17 @@
       margin-bottom: 10px;
     }
 
+    .privacy-date {
+      font-size: 0.8125rem;
+      color: var(--dim);
+      display: block;
+      margin-top: 24px;
+      margin-bottom: 52px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── Privacy prose (fabric-lens-privacy overrides) ── */
     .privacy-prose h2 {
       margin-top: 48px;
       margin-bottom: 12px;
@@ -59,6 +72,7 @@
       border-top: 1px solid var(--rule);
     }
 
+    /* ── Responsive ── */
     @media (max-width: 860px) {
       main { padding: 60px 24px 96px; }
     }
@@ -77,40 +91,33 @@
   </nav>
 
   <main>
-    <span class="page-eyebrow">Privacy Policy</span>
+    <span class="page-eyebrow">Fabric Lens · Privacy Policy</span>
     <h1>Privacy Policy</h1>
     <div class="privacy-prose">
 
-      <p>Fabric Lens is a Chrome extension that detects fabric and material composition on clothing product pages and displays a visual breakdown. This privacy policy explains what data is and is not collected when you use the extension.</p>
+      <p>Fabric Lens is a Chrome extension that detects fabric and material composition on clothing product pages and displays a visual breakdown. Your privacy matters. This policy explains what data the extension collects, how it is used, and your rights.</p>
+
+      <h2>Data We Collect</h2>
+      <p>Fabric Lens stores the following information locally within your browser only:</p>
+      <ul>
+        <li>Detection results for the active tab, temporarily cached in Chrome's session storage for the duration of your browser session</li>
+      </ul>
+      <p>The only instance where any data leaves your device is when you voluntarily click the <strong>"Report this page"</strong> or <strong>"Report incorrect"</strong> button. In that case, the URL of the current page is sent to a private Google Sheet owned by the developer, used solely to identify pages where the extension did not work correctly so that detection can be improved. This action is entirely optional and user-initiated, limited to the page URL only, and not linked to any user identity or account.</p>
 
       <h2>Data We Do Not Collect</h2>
-      <p>Fabric Lens does not collect, store, or transmit:</p>
-      <ul>
-        <li>Personal information of any kind</li>
-        <li>Browsing history</li>
-        <li>Cookies or tracking identifiers</li>
-        <li>Information about which websites you visit</li>
-        <li>Any data about your device or location</li>
-      </ul>
+      <p>We do not collect your name, email address, location, contacts, browsing history, cookies, tracking identifiers, or any other personal information. Fabric Lens has no user accounts and no backend database.</p>
 
       <h2>How the Extension Works</h2>
       <p>When you open the Fabric Lens popup on a product page, the extension reads the visible text content of that page locally within your browser to detect fabric and fiber information. This processing happens entirely on your device. No page content is ever sent to any server.</p>
 
-      <h2>The "Report This Page" Feature</h2>
-      <p>The only instance where any data leaves your device is when you voluntarily click the <strong>"Report this page"</strong> or <strong>"Report incorrect"</strong> button. When clicked, the URL of the current page is sent to a private Google Sheet owned by the developer. This is used solely to identify product pages where the extension did not work correctly, so that detection can be improved.</p>
-      <p>This action is:</p>
+      <h2>Third-Party Services</h2>
+      <p>Fabric Lens uses the following third-party service, which has its own privacy practices:</p>
       <ul>
-        <li>Entirely optional and user-initiated</li>
-        <li>Limited to the page URL only — no personal information is included</li>
-        <li>Not linked to any user identity or account</li>
+        <li><strong>Google Apps Script &amp; Google Sheets:</strong> When you voluntarily submit a report, the page URL is received by a Google Apps Script web app and stored in a Google Sheet. This data is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
       </ul>
 
-      <h2>Data Storage</h2>
-      <p>Fabric Lens uses Chrome's built-in session storage to temporarily cache detection results for the active tab. This data exists only for the duration of your browser session and is never transmitted externally.</p>
-
-      <h2>Third-Party Services</h2>
-      <p>When a report is submitted voluntarily, the page URL is received by a Google Apps Script web app and stored in a Google Sheet. This data is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</p>
-      <p>No other third-party services, analytics tools, or tracking services are used.</p>
+      <h2>Data Retention and Deletion</h2>
+      <p>Session storage data exists only for the duration of your browser session and is automatically cleared when the session ends. Since no personal data is stored on our servers, there is nothing to request deletion of. To remove all locally cached data, simply close your browser or uninstall the extension.</p>
 
       <h2>Contact</h2>
       <p>Questions about this privacy policy? Reach us at <a href="mailto:hello@transcendfrontiers.com">hello@transcendfrontiers.com</a>.</p>
