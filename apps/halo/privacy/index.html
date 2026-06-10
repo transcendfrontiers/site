@@ -4,96 +4,227 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Halo — Privacy Policy · Transcend Frontiers</title>
+  <meta name="description" content="Privacy Policy for Halo by Transcend Frontiers.">
 
-  <!-- Favicon: dark navy + blue lettermark -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='7' fill='%230a0d14'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui%2C sans-serif' font-weight='700' font-size='13' fill='%232563eb'%3ETF%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%23f6f1eb'/%3E%3CradialGradient id='g' cx='55%25' cy='45%25' r='55%25'%3E%3Cstop offset='0%25' stop-color='%232563eb' stop-opacity='1'/%3E%3Cstop offset='60%25' stop-color='%232563eb' stop-opacity='0.3'/%3E%3Cstop offset='100%25' stop-color='%23f6f1eb' stop-opacity='0'/%3E%3C/radialGradient%3E%3Ccircle cx='16' cy='16' r='13' fill='url(%23g)'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../../css/shared.css">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-    /* ── Navigation (halo-privacy-specific) ── */
-    .nav-back {
-      display: inline-flex;
+    :root {
+      --bg:          #f6f1eb;
+      --ink:         #1a1510;
+      --ink-mid:     #3d332a;
+      --muted:       #6a5f58;
+      --dim:         #a89890;
+      --rule:        rgba(0, 0, 0, 0.09);
+      --accent:      #2563eb;
+      --accent-dark: #1d4ed8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    ::selection { background: #bfdbfe; color: #1e3a8a; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.875rem;
-      font-weight: 500;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 60px;
+      background: rgba(246, 241, 235, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-logo {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.125rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
       transition: color 0.15s;
     }
-    .nav-back:hover { color: var(--ink); }
-    .nav-back svg { flex-shrink: 0; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { color: var(--accent) !important; }
 
-    /* ── Main content ── */
+    /* ── Page content ── */
     main {
       max-width: 720px;
       margin: 0 auto;
-      padding: 80px 40px 120px;
+      padding: 100px 60px 120px;
     }
 
-    .page-eyebrow {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+    .page-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 16px;
       display: block;
+      margin-bottom: 24px;
     }
 
     h1 {
-      font-weight: 700;
-      font-size: clamp(2rem, 3.5vw, 2.75rem);
-      letter-spacing: -0.025em;
-      line-height: 1.1;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
       color: var(--ink);
-      margin-bottom: 10px;
+      margin-bottom: 60px;
     }
 
-    .privacy-date {
+    /* ── Prose ── */
+    .prose p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .prose h2 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-style: normal;
+      font-weight: 600;
       font-size: 0.8125rem;
-      color: var(--dim);
-      display: block;
-      margin-top: 24px;
-      margin-bottom: 52px;
-      padding-top: 24px;
-      border-top: 1px solid var(--rule);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      margin-top: 52px;
+      margin-bottom: 14px;
     }
 
-    /* ── Privacy prose (halo-privacy overrides) ── */
-    .privacy-prose h2 {
-      margin-top: 48px;
-      margin-bottom: 12px;
-      padding-top: 48px;
-      border-top: 1px solid var(--rule);
+    .prose ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 18px;
     }
+
+    .prose li {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .prose li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+
+    .prose strong {
+      font-weight: 600;
+      color: var(--ink-mid);
+    }
+
+    .prose a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+      transition: border-color 0.15s;
+    }
+    .prose a:hover { border-color: var(--accent); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 24px 60px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p, footer a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+    footer a:hover { color: var(--ink-mid); }
+
+    .footer-links { display: flex; gap: 28px; }
 
     /* ── Responsive ── */
     @media (max-width: 860px) {
-      main { padding: 60px 24px 96px; }
+      nav { padding: 0 24px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      main { padding: 72px 24px 96px; }
+      footer { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
+  <!-- ── Nav ── -->
   <nav>
     <a class="nav-logo" href="../../../">Transcend Frontiers</a>
-    <a class="nav-back" href="../../../">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M8.5 2.5L4 7L8.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Back
-    </a>
+    <div class="nav-links">
+      <a href="../../../#apps">Apps</a>
+      <a href="mailto:hello@transcendfrontiers.com" class="nav-cta">Contact</a>
+    </div>
   </nav>
 
+
+  <!-- ── Content ── -->
   <main>
-    <span class="page-eyebrow">Halo · Privacy Policy</span>
+    <span class="page-label">Halo &middot; Privacy Policy</span>
     <h1>Privacy Policy</h1>
-    <div class="privacy-prose">
+
+    <div class="prose">
 
       <p>Halo keeps everything on your device. There's no backend, no user accounts, and no server-side storage. Here's what the app holds and why.</p>
 
@@ -146,9 +277,14 @@
     </div>
   </main>
 
+
+  <!-- ── Footer ── -->
   <footer>
     <p>&copy; 2026 Transcend Frontiers. All rights reserved.</p>
-    <a href="../../../">&larr; Back to site</a>
+    <div class="footer-links">
+      <a href="../../../#apps">Apps</a>
+      <a href="mailto:hello@transcendfrontiers.com">Contact</a>
+    </div>
   </footer>
 
 </body>
