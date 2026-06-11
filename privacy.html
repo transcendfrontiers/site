@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Transcend Frontiers</title>
+  <meta name="description" content="Privacy Policy for Transcend Frontiers applications and services.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%23f6f1eb'/%3E%3CradialGradient id='g' cx='55%25' cy='45%25' r='55%25'%3E%3Cstop offset='0%25' stop-color='%232563eb' stop-opacity='1'/%3E%3Cstop offset='60%25' stop-color='%232563eb' stop-opacity='0.3'/%3E%3Cstop offset='100%25' stop-color='%23f6f1eb' stop-opacity='0'/%3E%3C/radialGradient%3E%3Ccircle cx='16' cy='16' r='13' fill='url(%23g)'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #f6f1eb;
+      --ink:         #1a1510;
+      --ink-mid:     #3d332a;
+      --muted:       #6a5f58;
+      --dim:         #a89890;
+      --rule:        rgba(0, 0, 0, 0.09);
+      --accent:      #2563eb;
+      --accent-dark: #1d4ed8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    ::selection { background: #bfdbfe; color: #1e3a8a; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 60px;
+      background: rgba(246, 241, 235, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-logo {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.125rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--ink); }
+
+    /* ── Page content ── */
+    .page-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 100px 60px 120px;
+    }
+
+    .page-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 60px;
+    }
+
+    /* ── Prose ── */
+    .prose p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .prose h2 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      margin-top: 52px;
+      margin-bottom: 14px;
+    }
+
+    .prose ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 18px;
+    }
+
+    .prose li {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .prose li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+
+    .prose a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+      transition: border-color 0.15s;
+    }
+    .prose a:hover { border-color: var(--accent); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 24px 60px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p, footer a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+    footer a:hover { color: var(--ink-mid); }
+
+    .footer-links { display: flex; gap: 28px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      nav { padding: 0 24px; }
+      .page-wrap { padding: 72px 24px 96px; }
+      footer { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav>
+    <a class="nav-logo" href="/">Transcend Frontiers</a>
+  </nav>
+
+
+  <!-- ── Content ── -->
+  <main class="page-wrap">
+    <span class="page-label">Legal</span>
+    <h1>Privacy Policy</h1>
+
+    <div class="prose">
+
+      <p>This Privacy Policy describes how Transcend Frontiers ("we", "us", or "our") handles information in connection with our applications and services. We are committed to protecting your privacy.</p>
+
+      <h2>Information We Collect</h2>
+
+      <p>We may collect the following types of information:</p>
+      <ul>
+        <li>Information you provide directly, such as when you contact support</li>
+        <li>Usage data and analytics to improve our applications</li>
+        <li>Device information such as device type and operating system version</li>
+      </ul>
+
+      <h2>How We Use Your Information</h2>
+
+      <p>We use collected information to:</p>
+      <ul>
+        <li>Operate and improve our applications and services</li>
+        <li>Respond to support requests and communicate with you</li>
+        <li>Understand how our applications are used</li>
+        <li>Comply with applicable laws and regulations</li>
+      </ul>
+
+      <h2>Data Sharing</h2>
+
+      <p>We do not sell, trade, or rent your personal information to third parties. We may share data with trusted service providers who assist us in operating our applications, subject to confidentiality agreements.</p>
+
+      <h2>Data Retention</h2>
+
+      <p>We retain personal information only as long as necessary to provide our services or as required by law. You may request deletion of your data by contacting us.</p>
+
+      <h2>Security</h2>
+
+      <p>We implement reasonable technical and organizational measures to protect your information. However, no method of transmission over the internet is 100% secure.</p>
+
+      <h2>Contact Us</h2>
+
+      <p>If you have questions about this Privacy Policy, please reach out at <a href="mailto:hello@transcendfrontiers.com">hello@transcendfrontiers.com</a>.</p>
+
+    </div>
+  </main>
+
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>&copy; 2026 Transcend Frontiers. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:hello@transcendfrontiers.com">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
