@@ -20,8 +20,8 @@
   <meta property="og:image" content="/img/halo/halo-share-card-444.png" />
   <meta property="og:type" content="website" />
 
-  <!-- Favicon: Halo purple orb -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%232d2060'/%3E%3CradialGradient id='o' cx='55%25' cy='45%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23c4b5fd'/%3E%3Cstop offset='60%25' stop-color='%23a78bfa' stop-opacity='0.6'/%3E%3Cstop offset='100%25' stop-color='%232d2060' stop-opacity='0'/%3E%3C/radialGradient%3E%3Ccircle cx='16' cy='16' r='13' fill='url(%23o)'/%3E%3C/svg%3E">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../img/halo-icon.png">
 
   <!-- DM Sans: weights 400 and 500 only -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -447,18 +447,9 @@
 
       .feature-grid { grid-template-columns: 1fr; }
 
-      .screenshot-row {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        gap: 12px;
-        padding-bottom: 12px;
-      }
-      .screenshot-item {
-        flex: 0 0 46%;
-        scroll-snap-align: start;
-        min-width: 0;
-      }
+      .screenshot-row { gap: 8px; }
+      .screenshot-item { min-width: 0; }
+      .screenshot-frame { border-width: 4px; border-radius: 20px; }
 
       .waitlist-row { flex-direction: column; }
     }

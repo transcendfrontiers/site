@@ -17,10 +17,11 @@
   <!-- Open Graph -->
   <meta property="og:title" content="current: somatic awareness for iOS" />
   <meta property="og:description" content="notice how you actually feel. no streaks. no guilt if you miss a day." />
+  <meta property="og:image" content="/img/current/current-share-card.png" />
   <meta property="og:type" content="website" />
 
-  <!-- Favicon: warm orb on dark ground -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%232A2825'/%3E%3CradialGradient id='o' cx='55%25' cy='42%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23C47B6A'/%3E%3Cstop offset='55%25' stop-color='%23E8C4A0' stop-opacity='0.55'/%3E%3Cstop offset='100%25' stop-color='%232A2825' stop-opacity='0'/%3E%3C/radialGradient%3E%3Ccircle cx='16' cy='16' r='13' fill='url(%23o)'/%3E%3C/svg%3E">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../img/current-icon.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -140,7 +141,12 @@
     #hero {
       padding: 132px 0 100px;
     }
-    .hero-text { max-width: 520px; }
+    #hero .container {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+    .hero-text { flex: 1; max-width: 480px; }
     #hero h1 { margin-bottom: 20px; }
     .hero-sub {
       font-family: 'DM Sans', sans-serif;
@@ -179,86 +185,25 @@
       color: var(--text-3);
     }
 
-    /* ── Widget row ── */
-    .widgets-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 56px;
-      align-items: flex-end;
-    }
-
-    /* Small widget: 120×120 */
-    .widget-sm {
-      width: 120px;
-      height: 120px;
-      border-radius: 22px;
-      padding: 13px;
-      display: flex;
-      flex-direction: column;
+    /* ── Hero phone mockup ── */
+    .phone-mockup {
       flex-shrink: 0;
     }
-    .widget-sm .w-top { flex-shrink: 0; }
-    .widget-sm .w-mid { flex: 1; display: flex; align-items: center; justify-content: center; }
-    .widget-sm .w-bot { flex-shrink: 0; }
-
-    /* Medium widget: 260×120 */
-    .widget-md {
-      width: 260px;
-      height: 120px;
-      border-radius: 22px;
-      padding: 13px;
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-      flex-shrink: 0;
+    .phone-shell {
+      width: 240px;
+      border: 7px solid #2A2825;
+      border-radius: 44px;
+      overflow: hidden;
+      background: #2A2825;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.05),
+        0 28px 64px rgba(42, 40, 37, 0.16),
+        0 4px 16px rgba(42, 40, 37, 0.08);
     }
-    .widget-md .w-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 1;
-      min-width: 0;
-    }
-    .widget-md .w-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 4px;
-      padding-left: 12px;
-      flex-shrink: 0;
-    }
-
-    /* Widget typography */
-    .w-wordmark {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 9px;
-      letter-spacing: 0.65px;
-      opacity: 0.65;
-    }
-    .w-state {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 13px;
-      line-height: 1.25;
-      text-align: center;
-    }
-    .w-hint {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 9px;
-      opacity: 0.6;
-      text-align: center;
-    }
-    /* Medium widget overrides */
-    .widget-md .w-state { text-align: left; font-size: 14px; }
-    .widget-md .w-hint  { text-align: left; }
-
-    /* Bars */
-    .bar {
-      width: 6px;
-      border-radius: 3px 3px 0 0;
-      flex-shrink: 0;
+    .phone-shell img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* ── How it works ── */
@@ -556,6 +501,7 @@
       transition: color 0.15s;
     }
     .footer-links a:hover { color: var(--text-1); }
+    .footer-links .footer-tf { margin-left: auto; }
 
     /* ── Apple icon shared ── */
     .apple-icon { flex-shrink: 0; }
@@ -619,18 +565,15 @@
 
       .feature-grid  { grid-template-columns: 1fr; }
       .states-grid   { grid-template-columns: 1fr 1fr; }
-      .screenshot-row { gap: 12px; }
+      .screenshot-row { gap: 8px; }
+      .screenshot-item { min-width: 0; }
+      .screenshot-frame { border-width: 4px; border-radius: 20px; }
       .insight-grid  { grid-template-columns: 1fr; gap: 32px; }
       .pricing-single { padding: 32px 24px; }
 
-      .widgets-row {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 8px;
-        flex-wrap: nowrap;
-      }
-      .widget-sm, .widget-md { scroll-snap-align: start; }
+      #hero .container { flex-direction: column; gap: 40px; }
+      .hero-text { max-width: 100%; }
+      .phone-shell { width: 200px; }
 
       .footer-inner {
         grid-template-columns: 1fr;
@@ -652,7 +595,7 @@
     <div class="nav-inner">
       <a class="nav-wordmark" href="/current">current</a>
       <!-- <a class="btn-nav" href="#appstore" aria-label="Download current free on the App Store">download free</a> -->
-      <a class="btn-nav" href="#waitlist">join waitlist</a>
+      <a class="btn-nav" href="#waitlist">Join Waitlist</a>
     </div>
   </nav>
 
@@ -664,59 +607,27 @@
 
         <div class="hero-text">
           <span class="eyebrow">nervous system check-in</span>
-          <h1>notice how you <em>actually</em> feel.</h1>
+          <h1>Notice how you <em>actually</em> feel.</h1>
           <p class="hero-sub">
-            a quick check-in, once or twice a day.<br>
-            no streaks. no guilt if you miss a day.
+            A quick check-in, once or twice a day.<br>
+            No streaks. No guilt if you miss a day.
           </p>
           <!-- <div class="hero-cta-wrap">
             <a class="btn-appstore" href="#appstore" aria-label="Download current free on the App Store">
-              free download on the App Store
+              Free download on the App Store
             </a>
           </div> -->
           <div class="hero-cta-wrap">
-            <a class="btn-appstore" href="#waitlist">join the waitlist</a>
-            <span class="hero-note">launching on the App Store soon.</span>
+            <a class="btn-appstore" href="#waitlist">Join the Waitlist</a>
+            <span class="hero-note">Launching on the App Store soon.</span>
           </div>
         </div>
 
-        <!-- Widget previews -->
-        <div class="widgets-row" aria-hidden="true">
-
-          <!-- Widget 1: running on fumes (small) -->
-          <div class="widget-sm" style="background:#EDD0A0; color:#7A3A10;">
-            <span class="w-top w-wordmark">current</span>
-            <div class="w-mid">
-              <span class="w-state">running on fumes</span>
-            </div>
-            <span class="w-bot w-hint">tired but still going</span>
+        <!-- Phone mockup -->
+        <div class="phone-mockup" aria-hidden="true">
+          <div class="phone-shell">
+            <img src="/img/current/current-share-card.png" alt="current app showing six somatic check-in states: anxious, alive, numb, at ease, running on fumes, wound up" />
           </div>
-
-          <!-- Widget 2: at ease (small) -->
-          <div class="widget-sm" style="background:#F0E6A0; color:#6B5A10;">
-            <span class="w-top w-wordmark">current</span>
-            <div class="w-mid">
-              <span class="w-state">at ease</span>
-            </div>
-            <span class="w-bot w-hint">steady, present</span>
-          </div>
-
-          <!-- Widget 3: alive (medium, with bar chart) -->
-          <div class="widget-md" style="background:#D8ECC8; color:#2A4A10;">
-            <div class="w-left">
-              <span class="w-wordmark">current</span>
-              <span class="w-state" style="text-align:left;">alive</span>
-              <span class="w-hint" style="text-align:left;">vibrant, full of energy</span>
-            </div>
-            <div class="w-bars">
-              <div class="bar" style="height:12px; background:#2A4A10; opacity:0.35;"></div>
-              <div class="bar" style="height:18px; background:#2A4A10; opacity:0.50;"></div>
-              <div class="bar" style="height:23px; background:#2A4A10; opacity:0.65;"></div>
-              <div class="bar" style="height:28px; background:#2A4A10; opacity:0.80;"></div>
-              <div class="bar" style="height:35px; background:#2A4A10; opacity:1.0;"></div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
@@ -726,7 +637,7 @@
       <div class="container">
         <div class="section-header">
           <span class="eyebrow">how it works</span>
-          <h2>the whole thing takes ten seconds.</h2>
+          <h2>The whole thing takes ten seconds.</h2>
         </div>
 
         <div class="feature-grid">
@@ -739,8 +650,8 @@
                 <path d="M9 3v6"/>
               </svg>
             </div>
-            <h3>widget check-in</h3>
-            <p>tap a state from your home screen widget. the app stays closed. the whole thing takes about five seconds.</p>
+            <h3>Widget check-in</h3>
+            <p>Tap a state from your home screen widget. The app stays closed. The whole thing takes about five seconds.</p>
           </div>
 
           <div class="feature-card">
@@ -751,8 +662,8 @@
                 <circle cx="12" cy="12" r="1" fill="currentColor"/>
               </svg>
             </div>
-            <h3>somatic states</h3>
-            <p>the words were picked carefully. each one names something you recognize the moment you see it. more precise than "tired". more honest than "fine".</p>
+            <h3>Somatic states</h3>
+            <p>The words were picked carefully. Each one names something you recognize the moment you see it. More precise than "tired". More honest than "fine".</p>
           </div>
 
           <div class="feature-card">
@@ -761,8 +672,8 @@
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
               </svg>
             </div>
-            <h3>pattern insights</h3>
-            <p>give it a few days. current starts to surface things: your afternoons, your Sundays, the stretch before a deadline.</p>
+            <h3>Pattern insights</h3>
+            <p>Give it a few days. current starts to surface things: your afternoons, your Sundays, the stretch before a deadline.</p>
           </div>
 
           <div class="feature-card">
@@ -772,8 +683,8 @@
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
               </svg>
             </div>
-            <h3>gentle reminders</h3>
-            <p>optional nudges at whatever time you pick. ignore one and it goes quiet.</p>
+            <h3>Gentle reminders</h3>
+            <p>Optional nudges at whatever time you pick. Ignore one and it goes quiet.</p>
           </div>
 
         </div>
@@ -785,7 +696,7 @@
       <div class="container">
         <div class="section-header">
           <span class="eyebrow">six states</span>
-          <h2>six words for six different days.</h2>
+          <h2>Six words for six different days.</h2>
         </div>
 
         <div class="states-grid">
@@ -829,7 +740,7 @@
       <div class="container">
         <div class="section-header">
           <span class="eyebrow">the app</span>
-          <h2>built for how you actually live.</h2>
+          <h2>Built for how you actually live.</h2>
         </div>
         <div class="screenshot-row">
 
@@ -837,21 +748,21 @@
             <div class="screenshot-frame">
               <img src="/img/current/iphone-17-pro_today.png" alt="current app today screen showing six somatic check-in states and today's entries" />
             </div>
-            <p class="screenshot-label">today</p>
+            <p class="screenshot-label">Today</p>
           </div>
 
           <div class="screenshot-item">
             <div class="screenshot-frame">
               <img src="/img/current/iphone-17-pro_history.png" alt="current app history screen showing past 7 days as colour blocks and a log of recent check-ins" />
             </div>
-            <p class="screenshot-label">history</p>
+            <p class="screenshot-label">History</p>
           </div>
 
           <div class="screenshot-item">
             <div class="screenshot-frame">
               <img src="/img/current/iphone-17-pro_insights.png" alt="current app insights screen showing most common state, time-of-day patterns, and day-of-week patterns" />
             </div>
-            <p class="screenshot-label">insights</p>
+            <p class="screenshot-label">Insights</p>
           </div>
 
         </div>
@@ -865,8 +776,8 @@
 
           <div class="insight-left">
             <span class="eyebrow">pattern insights</span>
-            <h2>you see the pattern. you decide what it means.</h2>
-            <p>there's no score. no recommendation. just: here's what the last week looked like.</p>
+            <h2>You see the pattern. You decide what it means.</h2>
+            <p>There's no score. No recommendation. Just: here's what the last week looked like.</p>
           </div>
 
           <div class="insight-right">
@@ -934,19 +845,19 @@
       <div class="container">
         <div class="section-header">
           <span class="eyebrow">coming soon</span>
-          <h2>get notified when current launches.</h2>
-          <p style="max-width: 400px; margin: 16px auto 0; font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 15px; color: var(--text-2); line-height: 1.6;">leave your email and we'll let you know the moment it's on the App Store.</p>
+          <h2>Get notified when current launches.</h2>
+          <p style="max-width: 400px; margin: 16px auto 0; font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 15px; color: var(--text-2); line-height: 1.6;">Leave your email and we'll let you know the moment it's on the App Store.</p>
         </div>
 
         <div class="waitlist-wrap">
           <form id="waitlist-form" novalidate>
             <div class="waitlist-row">
               <input type="email" id="waitlist-email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
-              <button type="submit" class="waitlist-btn">notify me</button>
+              <button type="submit" class="waitlist-btn">Notify Me</button>
             </div>
           </form>
           <div id="waitlist-success" class="waitlist-success" hidden>
-            you're on the list — we'll let you know when current is live.
+            You're on the list — we'll let you know when current is live.
           </div>
         </div>
       </div>
@@ -958,11 +869,12 @@
   <footer>
     <div class="footer-inner">
       <a class="footer-wordmark" href="/current">current</a>
-      <p class="footer-tagline">your nervous system is always talking.</p>
+      <p class="footer-tagline">Your nervous system is always talking.</p>
       <nav class="footer-links" aria-label="Footer links">
-        <a href="/current/privacy/">privacy</a>
-        <a href="/current/terms/">terms</a>
-        <a href="mailto:hello@transcendfrontiers.com">contact</a>
+        <a href="/current/privacy/">Privacy</a>
+        <a href="/current/terms/">Terms</a>
+        <a href="mailto:hello@transcendfrontiers.com">Contact</a>
+        <a href="/" class="footer-tf">transcendfrontiers.com</a>
       </nav>
     </div>
   </footer>
@@ -980,7 +892,7 @@
         if (!email) return;
 
         var btn = form.querySelector('.waitlist-btn');
-        btn.textContent = 'sending…';
+        btn.textContent = 'Sending…';
         btn.disabled = true;
 
         fetch('https://ipapi.co/json/')
