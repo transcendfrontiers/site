@@ -1,0 +1,19 @@
+# Search engines and AI crawlers are welcome to index this site.
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers (explicitly allowed)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://transcendfrontiers.com/sitemap.xml

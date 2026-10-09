@@ -1,0 +1,27 @@
+# Transcend Frontiers
+
+> Transcend Frontiers is a small software studio that builds websites, native iPhone apps and workflow automations for small businesses. It also designs, builds and supports its own consumer apps: Halo, current and Fabric Lens.
+
+Contact: hello@transcendfrontiers.com
+
+## Services
+
+- **Websites:** marketing sites and landing pages built in Webflow, Framer or custom code, with analytics and search setup.
+- **iPhone apps:** native iOS apps built in SwiftUI, including widgets, notifications, subscriptions, in-app purchases and App Store launch.
+- **Workflow automation:** integrations that connect forms, CRMs, spreadsheets, email and Slack so routine work happens automatically.
+- **Process:** a ~30 minute intro call (or email), a written proposal with fixed scope, price and timeline, an iterative build with early feedback, then a handoff with logins, documentation and a walkthrough. Ongoing support is available.
+
+## Apps
+
+- [current](https://transcendfrontiers.com/current/): a nervous system (somatic) check-in app for iPhone. Users tap one of six body-based states from a home screen widget (alive, at ease, running on fumes, numb, anxious, wound up) and see weekly patterns by time of day and day of week. No streaks, no scores. Free to download; $59.99/year with a 7-day free trial. [App Store](https://apps.apple.com/us/app/current-nervous-system-log/id6777603277)
+- [Halo](https://transcendfrontiers.com/halo/): an angel number app for iPhone. Sends a notification when the user's chosen angel numbers (e.g. 111, 444) or mirror hours (e.g. 11:11) appear, with a sighting journal, streaks, life path number and shareable cards. Free to download; $49.99/year for everything. [App Store](https://apps.apple.com/us/app/halo-angel-numbers/id6771238615)
+- [Fabric Lens](https://chromewebstore.google.com/detail/fabric-lens/akmghbcmnldghgeiohgmfjcbnpmomjle): a free Chrome extension that shows what clothing is made of while shopping online. Natural fibers appear in green and synthetics in red.
+
+## Policies
+
+- [current privacy policy](https://transcendfrontiers.com/current/privacy/)
+- [current terms of service](https://transcendfrontiers.com/current/terms/)
+- [Halo privacy policy](https://transcendfrontiers.com/halo/privacy/)
+- [Halo terms of use](https://transcendfrontiers.com/halo/terms/)
+- [Fabric Lens privacy policy](https://transcendfrontiers.com/apps/fabric-lens/privacy/)
+- [Transcend Frontiers privacy policy](https://transcendfrontiers.com/privacy.html)
