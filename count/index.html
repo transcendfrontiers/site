@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NYHJJJXXJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3NYHJJJXXJ');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Count: Card Counting Trainer for Blackjack on iPhone</title>
+  <meta name="description" content="Count deals cards on a timer while you keep the running count, then checks your answer. Practice Hi-Lo, KO, Hi-Opt, Omega II and Zen with up to eight decks." />
+
+  <link rel="canonical" href="https://transcendfrontiers.com/count/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="Transcend Frontiers" />
+  <meta name="theme-color" content="#0e4a30" />
+  <link rel="apple-touch-icon" href="/img/count-icon.png" />
+  <link rel="alternate" type="text/plain" title="LLM summary" href="https://transcendfrontiers.com/llms.txt" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MobileApplication",
+        "@id": "https://transcendfrontiers.com/count/#app",
+        "url": "https://transcendfrontiers.com/count/",
+        "name": "Count",
+        "alternateName": "Count: Card Counting Trainer",
+        "operatingSystem": "iOS",
+        "applicationCategory": "EducationalApplication",
+        "description": "Count deals cards on a timer while you keep the running count, then checks your answer. Practice Hi-Lo, KO, Hi-Opt, Omega II and Zen with up to eight decks.",
+        "keywords": "card counting, card counting trainer, blackjack, Hi-Lo, running count, true count, KO count, Omega II, Zen count",
+        "featureList": [
+          "Timed card dealing with running count checks",
+          "Six counting systems: Hi-Lo, KO, Hi-Opt I, Hi-Opt II, Omega II and Zen",
+          "One to eight decks",
+          "Pace down to 0.25 seconds per card",
+          "Flash dealing of up to four cards at once",
+          "True count and speed test drills",
+          "Accuracy history and charts"
+        ],
+        "image": "https://transcendfrontiers.com/img/count-icon.png",
+        "screenshot": [
+          "https://transcendfrontiers.com/img/count/iphone-17-pro_setup.png",
+          "https://transcendfrontiers.com/img/count/iphone-17-pro_reveal.png",
+          "https://transcendfrontiers.com/img/count/iphone-17-pro_stats.png"
+        ],
+        "offers": [
+          { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to download, with Hi-Lo drills" },
+          { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "description": "Count Pro, monthly" },
+          { "@type": "Offer", "price": "49.99", "priceCurrency": "USD", "description": "Count Pro, yearly" }
+        ],
+        "publisher": { "@id": "https://transcendfrontiers.com/#organization" },
+        "author": { "@id": "https://transcendfrontiers.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://transcendfrontiers.com/#organization",
+        "name": "Transcend Frontiers",
+        "url": "https://transcendfrontiers.com/",
+        "email": "hello@transcendfrontiers.com"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://transcendfrontiers.com/count/#webpage",
+        "url": "https://transcendfrontiers.com/count/",
+        "name": "Count: Card Counting Trainer for Blackjack on iPhone",
+        "about": { "@id": "https://transcendfrontiers.com/count/#app" },
+        "isPartOf": { "@id": "https://transcendfrontiers.com/#website" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is card counting legal?",
+            "acceptedAnswer": { "@type": "Answer", "text": "In the US, keeping a count in your head is not illegal. Casinos are private businesses, though, and can stop you from playing blackjack or ask you to leave. Count is a practice tool. It doesn't connect to any game and has no real-money play." }
+          },
+          {
+            "@type": "Question",
+            "name": "Which counting system should I learn first?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Hi-Lo. Every card counts +1, 0 or −1, and most books and strategy tables are written for it. It's the system in Count's free version." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the true count?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The running count divided by the number of decks left in the shoe. A running count of +6 with three decks left is a true count of +2. Count Pro has a drill for this conversion." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Count: Card Counting Trainer for Blackjack on iPhone" />
+  <meta property="og:description" content="Cards are dealt on a timer. You keep the running count, then check it. Hi-Lo, KO, Hi-Opt, Omega II and Zen, up to eight decks." />
+  <meta property="og:image" content="https://transcendfrontiers.com/img/count/count-share-card-landscape.png" />
+  <meta property="og:image:width" content="2400" />
+  <meta property="og:image:height" content="1260" />
+  <meta property="og:image:alt" content="Count, a card counting trainer for iPhone" />
+  <meta property="og:url" content="https://transcendfrontiers.com/count/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Transcend Frontiers" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Count: Card Counting Trainer for Blackjack on iPhone" />
+  <meta name="twitter:description" content="Cards are dealt on a timer. You keep the running count, then check it. Hi-Lo, KO, Hi-Opt, Omega II and Zen, up to eight decks." />
+  <meta name="twitter:image" content="https://transcendfrontiers.com/img/count/count-share-card-landscape.png" />
+  <meta name="twitter:image:alt" content="Count, a card counting trainer for iPhone" />
+
+  <link rel="icon" type="image/png" href="/img/count-icon.png">
+
+  <!-- Apple devices use SF Pro Rounded (ui-rounded), like the app; Nunito covers everyone else -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --canvas:   #f2f2f2;
+      --paper:    #ffffff;
+      --ink:      #0b0b0b;
+      --ink-2:    #5e5e5e;
+      --ink-3:    #8e8e8e;
+      --hairline: rgba(0, 0, 0, .1);
+      --surface:  rgba(0, 0, 0, .06);
+      --felt:     #0e4a30;
+      --felt-2:   #0a3b26;
+      --on-felt:  #e9f1ec;
+      --on-felt-2:#9fbfad;
+      --pos:      #1a8c40;
+      --neg:      #cc3333;
+      --pos-lt:   #73d98c;
+      --neg-lt:   #f27373;
+      --suit-red: #d9263a;
+
+      --font: ui-rounded, 'SF Pro Rounded', 'Nunito', system-ui, sans-serif;
+      --wrap: 1120px;
+      --gut:  clamp(16px, 4.5vw, 48px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: 500;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; }
+    .num { font-variant-numeric: tabular-nums; }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gut); }
+
+    .label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; text-wrap: balance; }
+    h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); line-height: 1.05; }
+    .sub { color: var(--ink-2); max-width: 520px; }
+
+    .pos { color: var(--pos); }
+    .neg { color: var(--neg); }
+
+    /* ── Buttons ── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 52px;
+      padding: 0 26px;
+      border-radius: 999px;
+      border: 0;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform .1s ease-out, opacity .1s;
+    }
+    .pill:active { transform: scale(.97); opacity: .8; }
+    .pill-ink   { background: var(--ink);   color: #fff; }
+    .pill-white { background: #fff;         color: var(--ink); }
+    .pill-ghost { background: var(--surface); color: var(--ink); }
+    .pill[aria-disabled="true"] { cursor: default; }
+    .pill[aria-disabled="true"]:active { transform: none; opacity: 1; }
+    .pill svg { flex-shrink: 0; }
+    .pill small { font-weight: 600; opacity: .55; }
+
+    .pro-mark {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      line-height: 1;
+      padding: 4px 5px 3px;
+      border-radius: 4px;
+      background: var(--ink);
+      color: #fff;
+      vertical-align: middle;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(242, 242, 242, .9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav .wrap {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .brand img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 600; }
+    .nav-links a { text-decoration: none; color: var(--ink-2); }
+    .nav-links a:hover { color: var(--ink); }
+    .nav .pill { height: 38px; padding: 0 16px; font-size: 14px; }
+
+    /* ── Hero: the felt ── */
+    .table {
+      position: relative;
+      margin: 0 clamp(8px, 1.4vw, 20px);
+      border-radius: 28px;
+      background: radial-gradient(120% 90% at 70% 20%, #136240 0%, var(--felt) 45%, var(--felt-2) 100%);
+      color: var(--on-felt);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .table::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .16;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+      gap: clamp(40px, 6vw, 88px);
+      align-items: center;
+      padding-top: clamp(64px, 8vw, 104px);
+      padding-bottom: clamp(56px, 7vw, 96px);
+    }
+    .table .label { color: var(--on-felt-2); }
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      line-height: .98;
+      margin: 18px 0 22px;
+    }
+    .hero h1 span { color: var(--on-felt-2); }
+    .hero .sub { color: var(--on-felt-2); font-size: clamp(1.05rem, 1.5vw, 1.2rem); margin-bottom: 34px; }
+    .hero-meta {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--on-felt-2);
+    }
+
+    /* ── Live drill ── */
+    .drill {
+      background: rgba(0, 0, 0, .22);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 22px;
+      padding: 18px 18px 20px;
+    }
+    .drill-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--on-felt-2);
+      margin-bottom: 18px;
+    }
+    .pace { display: flex; gap: 4px; }
+    .pace button {
+      border: 0;
+      background: rgba(255, 255, 255, .08);
+      color: var(--on-felt-2);
+      font-size: 12px;
+      font-weight: 700;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .pace button[aria-pressed="true"] { background: var(--on-felt); color: var(--felt-2); }
+    .pace button:disabled { cursor: default; opacity: .5; }
+
+    .stage {
+      height: 300px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+    .card {
+      position: relative;
+      width: 170px;
+      height: 238px;
+      border-radius: 16px;
+      background: #fff;
+      color: #000;
+      box-shadow: 0 18px 36px -12px rgba(0, 0, 0, .55);
+      display: grid;
+      place-items: center;
+      user-select: none;
+    }
+    .card.red { color: var(--suit-red); }
+    .card .c { position: absolute; display: flex; flex-direction: column; align-items: center; line-height: 1; font-weight: 800; font-size: 18px; gap: 2px; }
+    .card .c i { font-style: normal; font-size: 14px; }
+    .card .c.tl { top: 13px; left: 13px; }
+    .card .c.br { bottom: 13px; right: 13px; }
+    .card .mid { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+    .card .mid b { font-size: 74px; font-weight: 800; }
+    .card .mid i { font-style: normal; font-size: 42px; margin-top: 8px; }
+    .card.back {
+      background:
+        repeating-linear-gradient(45deg, rgba(255,255,255,.08) 0 6px, transparent 6px 12px),
+        #13543a;
+      border: 6px solid #fff;
+    }
+    .card.deal { animation: deal .18s ease-out; }
+    @keyframes deal {
+      from { transform: translateY(-14px) rotate(-3deg); opacity: .2; }
+      to   { transform: none; opacity: 1; }
+    }
+
+    .guess { text-align: center; display: none; }
+    .guess p { font-size: 15px; font-weight: 700; color: var(--on-felt-2); margin-bottom: 10px; }
+    .stepper { display: flex; align-items: center; justify-content: center; gap: 18px; }
+    .stepper button {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255, 255, 255, .1);
+      color: var(--on-felt);
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .stepper output { min-width: 120px; font-size: 76px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+
+    .result { text-align: center; display: none; }
+    .result .big { font-size: 80px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+    .result .big.right { color: var(--pos-lt); }
+    .result .big.wrong { color: var(--neg-lt); }
+    .result .verdict { font-size: 15px; font-weight: 700; margin-top: 10px; }
+    .result .hint { font-size: 13px; color: var(--on-felt-2); margin-top: 4px; }
+    .past {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 16px;
+      max-width: 340px;
+    }
+    .mini {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+      width: 34px;
+      padding: 3px 0 2px;
+      border-radius: 5px;
+      background: #fff;
+      color: #000;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .mini.red { color: var(--suit-red); }
+    .mini em { font-style: normal; font-size: 10px; }
+    .mini em.pos { color: var(--pos); }
+    .mini em.neg { color: var(--neg); }
+    .mini em.zero { color: #000; }
+
+    .stage.guessing .card, .stage.revealed .card { display: none; }
+    .stage.guessing .guess { display: block; }
+    .stage.revealed .result { display: block; }
+
+    .drill-controls { display: flex; gap: 10px; margin-top: 18px; }
+    .drill-controls .pill { flex: 1; justify-content: center; height: 54px; }
+    .drill-controls .pill-white:disabled { opacity: .4; cursor: default; }
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .legend span { display: block; color: var(--on-felt-2); opacity: .8; font-size: 11px; }
+    .legend .pos { color: var(--pos-lt); }
+    .legend .neg { color: var(--neg-lt); }
+
+    /* ── Sections ── */
+    section { padding: clamp(80px, 10vw, 128px) 0; }
+    .head { margin-bottom: clamp(40px, 5vw, 64px); }
+    .head .label { margin-bottom: 16px; }
+    .head .sub { margin-top: 16px; }
+
+    /* How it works */
+    .steps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--ink);
+    }
+    .steps li { padding: 22px 28px 0 0; }
+    .steps li + li { padding-left: 28px; border-left: 1px solid var(--hairline); }
+    .steps .n { font-size: 13px; font-weight: 800; color: var(--ink-3); }
+    .steps h3 { font-size: 21px; margin: 12px 0 8px; }
+    .steps p { color: var(--ink-2); font-size: 16px; }
+
+    /* Screens */
+    .screens {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(14px, 3vw, 40px);
+      align-items: start;
+    }
+    .screens figure:nth-child(2) { margin-top: 48px; }
+    .phone {
+      border: 7px solid #111;
+      border-radius: 42px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 30px 50px -28px rgba(0, 0, 0, .45);
+    }
+    .screens figcaption { margin-top: 16px; font-size: 15px; color: var(--ink-2); }
+    .screens figcaption b { display: block; color: var(--ink); font-weight: 800; }
+
+    /* Systems */
+    .systems { border-top: 1px solid var(--ink); }
+    .sys {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr) minmax(0, 380px);
+      gap: 28px;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .sys h3 { font-size: 22px; display: flex; align-items: center; gap: 8px; }
+    .sys p { color: var(--ink-2); font-size: 15px; }
+    .tags {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .tags span { display: block; font-size: 11px; font-weight: 700; color: var(--ink-3); }
+    .tags .zero { color: var(--ink); }
+    .sys-head {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr) minmax(0, 380px);
+      gap: 28px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    /* Pro */
+    .pro-sec { background: var(--ink); color: #fff; }
+    .pro-sec .label { color: #8a8a8a; }
+    .pro-sec .sub { color: #a3a3a3; }
+    .pro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
+    }
+    .ledger { width: 100%; border-collapse: collapse; font-size: 16px; }
+    .ledger th {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-align: left;
+      color: #8a8a8a;
+      padding: 0 12px 10px 0;
+    }
+    .ledger th:last-child { color: #fff; }
+    .ledger td { padding: 14px 12px 14px 0; border-top: 1px solid rgba(255, 255, 255, .12); vertical-align: top; }
+    .ledger tr:last-child td { border-bottom: 1px solid rgba(255, 255, 255, .12); }
+    .ledger thead td { border: 0; }
+    .ledger td:first-child { color: #8a8a8a; font-size: 14px; font-weight: 700; width: 22%; padding-top: 16px; }
+    .ledger td:nth-child(2) { color: #6f6f6f; width: 26%; }
+    .ledger td:last-child { font-weight: 700; }
+
+    .plans { display: grid; gap: 12px; }
+    .plan {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 22px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, .16);
+    }
+    .plan.best { border: 2px solid #fff; }
+    .plan b { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 800; }
+    .plan small { display: block; font-size: 14px; color: #a3a3a3; margin-top: 2px; }
+    .plan .price { text-align: right; font-size: 24px; font-weight: 800; line-height: 1.1; }
+    .plan .price small { font-size: 13px; }
+    .save {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--pos-lt);
+      border: 1px solid rgba(115, 217, 140, .5);
+      border-radius: 999px;
+      padding: 2px 7px;
+    }
+    .plans-note { font-size: 13px; color: #8a8a8a; margin-top: 6px; }
+    .plans .pill { justify-content: center; margin-top: 10px; }
+
+    /* FAQ */
+    .faq { border-top: 1px solid var(--ink); max-width: 820px; }
+    .faq details { border-bottom: 1px solid var(--hairline); }
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 0;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 24px; font-weight: 600; color: var(--ink-3); transition: transform .15s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { color: var(--ink-2); padding: 0 0 24px; max-width: 680px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--hairline); }
+    .foot {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding-top: 32px;
+      padding-bottom: 32px;
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+    .foot-tag { color: var(--ink-3); }
+    .foot nav { display: flex; gap: 22px; flex-wrap: wrap; }
+    .foot nav a { text-decoration: none; }
+    .foot nav a:hover { color: var(--ink); }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .nav-links a { display: none; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .drill { max-width: 440px; width: 100%; margin: 0 auto; }
+      .sys, .sys-head { grid-template-columns: 140px minmax(0, 1fr); }
+      .sys .tags { grid-column: 1 / -1; }
+      .sys-head span:last-child { display: none; }
+      .pro-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .steps { grid-template-columns: 1fr; }
+      .steps li, .steps li + li { padding: 20px 0; border-left: 0; }
+      .steps li + li { border-top: 1px solid var(--hairline); }
+      .screens { gap: 10px; }
+      .screens figure:nth-child(2) { margin-top: 24px; }
+      .phone { border-width: 4px; border-radius: 22px; }
+      .screens figcaption { font-size: 13px; }
+      .sys, .sys-head { grid-template-columns: 1fr; gap: 6px; }
+      .sys-head { display: none; }
+      .sys .tags { margin-top: 8px; }
+      .foot { grid-template-columns: 1fr; gap: 12px; }
+    }
+    @media (max-width: 420px) {
+      body { font-size: 16px; }
+      .nav .pill small { display: none; }
+      .hero .pill { width: 100%; justify-content: center; }
+      .stage { height: 270px; }
+      .card { width: 150px; height: 210px; }
+      .card .mid b { font-size: 62px; }
+      .drill-controls .pill { padding: 0 14px; }
+      .screens figcaption span { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="/count/"><img src="/img/count-icon.png" alt="">Count</a>
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#systems">Systems</a>
+        <a href="#pro">Pro</a>
+        <span class="pill pill-ink" aria-disabled="true">Coming soon <small>iPhone</small></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="table hero" style="padding:0">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="label">Card counting trainer for iPhone</span>
+          <h1>Keep the count. <span>Then check it.</span></h1>
+          <p class="sub">Count deals a shoe on a timer while you track the running count in your head. Stop whenever you like, give your answer and see if you were right.</p>
+          <span class="pill pill-white" aria-disabled="true">
+            <svg width="15" height="19" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.7C46.8 755.5 0 644.5 0 539.1c0-194.4 127-297.5 252.2-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg>
+            Coming soon to the App Store
+          </span>
+          <p class="hero-meta">Free to download, with Hi-Lo drills included. iPhone only.</p>
+        </div>
+
+        <!-- A real round of Hi-Lo, playable in the browser -->
+        <div class="drill" id="drill" aria-label="Try a round of Hi-Lo">
+          <div class="drill-top">
+            <span class="num" id="d-status">Hi-Lo · 15 cards</span>
+            <div class="pace" role="group" aria-label="Seconds per card">
+              <button type="button" data-pace="1500" aria-pressed="false">1.5 s</button>
+              <button type="button" data-pace="1000" aria-pressed="true">1.0 s</button>
+              <button type="button" data-pace="600" aria-pressed="false">0.6 s</button>
+            </div>
+          </div>
+
+          <div class="stage" id="d-stage">
+            <div class="card back" id="d-card" aria-live="off"></div>
+            <div class="guess">
+              <p>What's your count?</p>
+              <div class="stepper">
+                <button type="button" id="d-minus" aria-label="Lower">−</button>
+                <output class="num" id="d-guess" aria-live="polite">0</output>
+                <button type="button" id="d-plus" aria-label="Higher">+</button>
+              </div>
+            </div>
+            <div class="result" aria-live="polite">
+              <div class="big num" id="d-answer">0</div>
+              <div class="verdict" id="d-verdict"></div>
+              <div class="hint">Every card you saw, with its tag:</div>
+              <div class="past" id="d-past"></div>
+            </div>
+          </div>
+
+          <div class="drill-controls">
+            <button type="button" class="pill pill-white" id="d-main">Deal</button>
+          </div>
+
+          <div class="legend num" aria-label="Hi-Lo tags">
+            <div><span>A</span><b class="neg">−1</b></div>
+            <div><span>2</span><b class="pos">+1</b></div>
+            <div><span>3</span><b class="pos">+1</b></div>
+            <div><span>4</span><b class="pos">+1</b></div>
+            <div><span>5</span><b class="pos">+1</b></div>
+            <div><span>6</span><b class="pos">+1</b></div>
+            <div><span>7</span><b>0</b></div>
+            <div><span>8</span><b>0</b></div>
+            <div><span>9</span><b>0</b></div>
+            <div><span>10</span><b class="neg">−1</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── How it works ── -->
+    <section id="how">
+      <div class="wrap">
+        <div class="head">
+          <span class="label">How it works</span>
+          <h2>One card at a time,<br>at the pace you choose.</h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="n">01</span>
+            <h3>Set up the shoe</h3>
+            <p>Pick a system, the number of decks and how fast cards come out. The cards on the setup screen show the tag for each group of ranks.</p>
+          </li>
+          <li>
+            <span class="n">02</span>
+            <h3>Keep the running count</h3>
+            <p>Cards are dealt one after another. Add each tag in your head as it appears. Tap the card to pause.</p>
+          </li>
+          <li>
+            <span class="n">03</span>
+            <h3>Guess, then reveal</h3>
+            <p>Type the count you have and Count tells you if it matches, along with the true count and how many decks are left.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- ── Screens ── -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="screens">
+          <figure>
+            <div class="phone"><img src="/img/count/iphone-17-pro_setup.png" alt="Count setup screen with three sample cards showing Hi-Lo tags, a six-deck shoe selected and a pace of 0.75 seconds per card" loading="lazy"></div>
+            <figcaption><b>Setup</b><span>System, decks, pace and drill type on one screen.</span></figcaption>
+          </figure>
+          <figure>
+            <div class="phone"><img src="/img/count/iphone-17-pro_reveal.png" alt="Count drill screen showing the king of clubs, a running count of minus one and a true count of minus 0.2 with 5.8 decks left" loading="lazy"></div>
+            <figcaption><b>Reveal</b><span>The running count, true count and decks left.</span></figcaption>
+          </figure>
+          <figure>
+            <div class="phone"><img src="/img/count/iphone-17-pro_stats.png" alt="Count stats screen showing 82 percent accuracy, streaks, a 30-day chart and accuracy by pace" loading="lazy"></div>
+            <figcaption><b>Stats</b><span>Accuracy by day, by pace and by system.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Systems ── -->
+    <section id="systems" style="background:var(--paper)">
+      <div class="wrap">
+        <div class="head">
+          <span class="label">Systems</span>
+          <h2>Six counting systems.</h2>
+          <p class="sub">Hi-Lo is free. The rest come with Count Pro. Jacks, queens and kings count the same as tens.</p>
+        </div>
+        <div class="systems">
+          <div class="sys-head label"><span>System</span><span>Type</span><span>Tags, A through 10</span></div>
+          <div class="sys">
+            <h3>Hi-Lo</h3>
+            <p>Balanced, level 1. The usual place to start.</p>
+            <div class="tags num" data-tags="-1,1,1,1,1,1,0,0,0,-1"></div>
+          </div>
+          <div class="sys">
+            <h3>KO <span class="pro-mark">PRO</span></h3>
+            <p>Unbalanced, level 1. No true count conversion.</p>
+            <div class="tags num" data-tags="-1,1,1,1,1,1,1,0,0,-1"></div>
+          </div>
+          <div class="sys">
+            <h3>Hi-Opt I <span class="pro-mark">PRO</span></h3>
+            <p>Balanced, level 1. Aces and twos count 0.</p>
+            <div class="tags num" data-tags="0,0,1,1,1,1,0,0,0,-1"></div>
+          </div>
+          <div class="sys">
+            <h3>Hi-Opt II <span class="pro-mark">PRO</span></h3>
+            <p>Balanced, level 2. Aces count 0.</p>
+            <div class="tags num" data-tags="0,1,1,2,2,1,1,0,0,-2"></div>
+          </div>
+          <div class="sys">
+            <h3>Omega II <span class="pro-mark">PRO</span></h3>
+            <p>Balanced, level 2. Nines count −1.</p>
+            <div class="tags num" data-tags="0,1,1,2,2,2,1,0,-1,-2"></div>
+          </div>
+          <div class="sys">
+            <h3>Zen <span class="pro-mark">PRO</span></h3>
+            <p>Balanced, level 2. Aces count −1.</p>
+            <div class="tags num" data-tags="-1,1,1,2,2,2,1,0,0,-2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Pro ── -->
+    <section class="pro-sec" id="pro">
+      <div class="wrap pro-grid">
+        <div>
+          <div class="head">
+            <span class="label">Count Pro</span>
+            <h2>Train for a real shoe.</h2>
+            <p class="sub">Every system, full eight-deck shoes, and drills that go past the running count.</p>
+          </div>
+          <table class="ledger num">
+            <thead><tr><td></td><th scope="col">Free</th><th scope="col">Pro</th></tr></thead>
+            <tbody>
+              <tr><td>Systems</td><td>Hi-Lo</td><td>All 6, from KO to Zen</td></tr>
+              <tr><td>Decks</td><td>1–2</td><td>1–8</td></tr>
+              <tr><td>Pace</td><td>1.00 s</td><td>Down to 0.25 s</td></tr>
+              <tr><td>Drills</td><td>Running</td><td>+ True count, speed test</td></tr>
+              <tr><td>Flash</td><td>—</td><td>Up to 4 cards at once</td></tr>
+              <tr><td>Stats</td><td>Score</td><td>History, charts, bests</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="plans num">
+          <div class="plan best">
+            <div><b>Yearly <span class="save">Save 17%</span></b><small>$4.17 / month, billed yearly</small></div>
+            <div class="price">$49.99<small>per year</small></div>
+          </div>
+          <div class="plan">
+            <div><b>Monthly</b><small>Billed monthly</small></div>
+            <div class="price">$4.99<small>per month</small></div>
+          </div>
+          <span class="pill pill-white" aria-disabled="true">Coming soon to the App Store</span>
+          <p class="plans-note">Prices in USD. Subscriptions renew automatically until you cancel in your App Store settings.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── FAQ ── -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="head">
+          <span class="label">Questions</span>
+          <h2>Before you sit down.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is card counting legal?</summary>
+            <p>In the US, keeping a count in your head is not illegal. Casinos are private businesses, though, and can stop you from playing blackjack or ask you to leave. Count is a practice tool. It doesn't connect to any game and has no real-money play.</p>
+          </details>
+          <details>
+            <summary>Which system should I learn first?</summary>
+            <p>Hi-Lo. Every card counts +1, 0 or −1, and most books and strategy tables are written for it. It's the system in Count's free version.</p>
+          </details>
+          <details>
+            <summary>What is the true count?</summary>
+            <p>The running count divided by the number of decks left in the shoe. A running count of +6 with three decks left is a true count of +2. Count shows it every time you reveal, and Count Pro has a drill just for the conversion.</p>
+          </details>
+          <details>
+            <summary>Do I need an account?</summary>
+            <p>No. There's no sign-up, and your scores and stats stay on your iPhone. See the <a href="/count/privacy/">privacy policy</a> for details.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <a class="brand" href="/count/"><img src="/img/count-icon.png" alt="">Count</a>
+      <span class="foot-tag">Practice the count before it counts.</span>
+      <nav aria-label="Footer">
+        <a href="/count/privacy/">Privacy</a>
+        <a href="/count/terms/">Terms</a>
+        <a href="mailto:hello@transcendfrontiers.com">Contact</a>
+        <a href="/">transcendfrontiers.com</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Tag strips for the systems table
+    const fmt = v => v > 0 ? '+' + v : v < 0 ? '−' + (-v) : '0';
+    const tone = v => v > 0 ? 'pos' : v < 0 ? 'neg' : 'zero';
+    const rankNames = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+    document.querySelectorAll('.tags').forEach(el => {
+      el.innerHTML = el.dataset.tags.split(',').map(Number)
+        .map((v, i) => `<div><span>${rankNames[i]}</span><b class="${tone(v)}">${fmt(v)}</b></div>`).join('');
+    });
+
+    // A short Hi-Lo round: 15 cards from a shuffled deck, then guess and reveal
+    (() => {
+      const ROUND = 15;
+      const suits = [['♠', false], ['♥', true], ['♦', true], ['♣', false]];
+      const label = r => ({ 1: 'A', 11: 'J', 12: 'Q', 13: 'K' })[r] || String(r);
+      const hiLo = r => { const v = Math.min(r, 10); return v >= 2 && v <= 6 ? 1 : v >= 7 && v <= 9 ? 0 : -1; };
+
+      const $ = id => document.getElementById(id);
+      const stage = $('d-stage'), cardEl = $('d-card'), main = $('d-main'), status = $('d-status');
+      const paceButtons = document.querySelectorAll('.pace button');
+      let pace = 1000, timer = null, dealt = [], guess = 0, phase = 'ready';
+
+      function shuffle() {
+        const deck = [];
+        for (const [symbol, red] of suits) for (let r = 1; r <= 13; r++) deck.push({ r, symbol, red });
+        for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [deck[i], deck[j]] = [deck[j], deck[i]]; }
+        return deck.slice(0, ROUND);
+      }
+
+      function show(card) {
+        const l = label(card.r);
+        cardEl.className = 'card deal' + (card.red ? ' red' : '');
+        cardEl.innerHTML = `<span class="c tl">${l}<i>${card.symbol}</i></span><b class="mid"><b>${l}</b><i>${card.symbol}</i></b><span class="c br">${l}<i>${card.symbol}</i></span>`;
+        cardEl.setAttribute('aria-label', `${l} ${card.symbol}`);
+      }
+
+      function setPhase(next) {
+        phase = next;
+        stage.className = 'stage ' + next;
+        paceButtons.forEach(b => b.disabled = next === 'dealing');
+        main.textContent = { ready: 'Deal', dealing: 'Stop and guess', guessing: 'Check', revealed: 'Deal again' }[next];
+      }
+
+      function start() {
+        const shoe = shuffle();
+        dealt = []; guess = 0; $('d-guess').textContent = '0';
+        setPhase('dealing');
+        const next = () => {
+          if (!shoe.length) return stop();
+          const card = shoe.shift();
+          dealt.push(card); show(card);
+          status.textContent = `Hi-Lo · ${dealt.length} / ${ROUND}`;
+          timer = setTimeout(next, pace);
+        };
+        next();
+      }
+
+      function stop() {
+        clearTimeout(timer);
+        setPhase('guessing');
+      }
+
+      function reveal() {
+        const count = dealt.reduce((sum, c) => sum + hiLo(c.r), 0);
+        const right = guess === count;
+        const answer = $('d-answer');
+        answer.textContent = fmt(count);
+        answer.className = 'big num ' + (right ? 'right' : 'wrong');
+        $('d-verdict').textContent = right ? 'Right on.' : `You said ${fmt(guess)}.`;
+        $('d-past').innerHTML = dealt.map(c => {
+          const v = hiLo(c.r);
+          return `<span class="mini${c.red ? ' red' : ''}">${label(c.r)}${c.symbol}<em class="${tone(v)}">${fmt(v)}</em></span>`;
+        }).join('');
+        setPhase('revealed');
+      }
+
+      main.addEventListener('click', () => {
+        if (phase === 'ready' || phase === 'revealed') start();
+        else if (phase === 'dealing') stop();
+        else reveal();
+      });
+      cardEl.addEventListener('click', () => { if (phase === 'dealing') stop(); });
+      $('d-minus').addEventListener('click', () => { guess--; $('d-guess').textContent = fmt(guess); });
+      $('d-plus').addEventListener('click', () => { guess++; $('d-guess').textContent = fmt(guess); });
+      paceButtons.forEach(b => b.addEventListener('click', () => {
+        pace = Number(b.dataset.pace);
+        paceButtons.forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+      }));
+    })();
+  </script>
+</body>
+</html>
