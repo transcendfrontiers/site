@@ -361,7 +361,7 @@
 
     .bars { margin-top: 40px; display: grid; gap: 14px; }
     .bar { display: grid; grid-template-columns: 170px 1fr; gap: 16px; align-items: center; font-size: 15px; }
-    .bar-track { height: 34px; }
+    .bar-track { height: 34px; display: flex; align-items: center; gap: 10px; }
     .bar-fill {
       height: 100%;
       border-radius: 3px;
@@ -373,7 +373,8 @@
       font-weight: 600;
       white-space: nowrap;
     }
-    .bar.fast .bar-fill { background: var(--accent); color: #fff; }
+    .bar.fast .bar-fill { flex: none; padding: 0; background: var(--accent); }
+    .bar-val { font-size: 14px; font-weight: 600; color: var(--accent); white-space: nowrap; }
 
     .method {
       margin-top: 28px;
@@ -636,7 +637,7 @@
 
         <div class="bars" role="img" aria-label="Bar chart: about 3 hours per property by hand compared with about 30 minutes of a person's time with the agents">
           <div class="bar"><span>By hand (estimate)</span><div class="bar-track"><div class="bar-fill" style="width:100%">~3 h</div></div></div>
-          <div class="bar fast"><span>With the agents</span><div class="bar-track"><div class="bar-fill" style="width:16.7%;min-width:80px">~30 min</div></div></div>
+          <div class="bar fast"><span>With the agents</span><div class="bar-track"><div class="bar-fill" style="width:16.67%"></div><span class="bar-val">~30 min</span></div></div>
         </div>
 
         <p class="method"><strong>How we estimated.</strong> Both figures are estimates, not log measurements. The by-hand times come from the screen recordings used to build the agents and the number of screens on each platform. In one recording, TurboTenant’s screens from leasing basics to photos took about 8½ minutes for someone with every answer ready, before writing a description or uploading a photo. The 30 minutes counts only what needs a person: answering the agent’s questions (5–10 minutes), reading three pre-publish summaries (10–15) and signing in or verifying a phone number when a site asks (5–10). The agents’ own run time isn’t counted, because nobody has to watch it. Across nine properties, that’s roughly 27 hours by hand against about 4½, around 6× less.</p>
@@ -656,7 +657,7 @@
           <li><h3>A short list it never guesses</h3><p>Address, bed and bath count, rent, deposit, pets and parking always come from the owner. Everything else falls back to a house default and is reported as one.</p></li>
           <li><h3>Trust the screen, not the playbook</h3><p>These sites change their layouts often. When a screen doesn’t match the playbook, the agent stops and asks instead of clicking where a button used to be.</p></li>
           <li><h3>A person handles identity</h3><p>The agent never gets past a login page or a bot check on its own, and never tries a password. Those go to a person.</p></li>
-          <li><h3>Gaps go back into the form</h3><p>Every question the agents had to ask became a question on the owner’s questionnaire, which grew from 34 questions to almost 90, so the next owner answers it up front.</p></li>
+          <li><h3>Gaps go back into the form</h3><p>Every question the agents had to ask got added to the owner’s questionnaire. It now covers what all three platforms need, so owners answer once and listings go out without a round of follow-up emails.</p></li>
         </ul>
       </div>
     </section>

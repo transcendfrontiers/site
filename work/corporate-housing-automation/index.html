@@ -361,7 +361,7 @@
 
     .bars { margin-top: 40px; display: grid; gap: 14px; }
     .bar { display: grid; grid-template-columns: 170px 1fr; gap: 16px; align-items: center; font-size: 15px; }
-    .bar-track { height: 34px; }
+    .bar-track { height: 34px; display: flex; align-items: center; gap: 10px; }
     .bar-fill {
       height: 100%;
       border-radius: 3px;
@@ -373,7 +373,8 @@
       font-weight: 600;
       white-space: nowrap;
     }
-    .bar.fast .bar-fill { background: var(--accent); color: #fff; }
+    .bar.fast .bar-fill { flex: none; padding: 0; background: var(--accent); }
+    .bar-val { font-size: 14px; font-weight: 600; color: var(--accent); white-space: nowrap; }
 
     .method {
       margin-top: 28px;
@@ -621,7 +622,7 @@
 
         <div class="bars" role="img" aria-label="Bar chart: 45 hours by hand compared with about 4 hours with the agents">
           <div class="bar"><span>By hand (estimate)</span><div class="bar-track"><div class="bar-fill" style="width:100%">45 h</div></div></div>
-          <div class="bar fast"><span>With the agents</span><div class="bar-track"><div class="bar-fill" style="width:8.9%;min-width:64px">~4 h</div></div></div>
+          <div class="bar fast"><span>With the agents</span><div class="bar-track"><div class="bar-fill" style="width:8.89%"></div><span class="bar-val">~4 h</span></div></div>
         </div>
 
         <p class="method"><strong>How we measured.</strong> “Actual” comes from the timestamps in the session logs for every session in that round of outreach. It counts the time the agent was working (2.9 hours) plus the time spent replying to it, answering questions or clearing CAPTCHAs (1.2 hours). Any pause longer than five minutes counts as a break and is left out. That works out to roughly 11× faster. Partner sites that need a new account and a verification step follow the same pattern: about 3.5 hours with the agents, measured the same way, against 10–15 by hand.</p>
