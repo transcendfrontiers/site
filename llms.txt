@@ -14,6 +14,7 @@ Contact: hello@transcendfrontiers.com
 ## Case studies
 
 - [Corporate housing automation](https://transcendfrontiers.com/work/corporate-housing-automation/): browser agents that list a corporate housing company's nine furnished rentals with 53 relocation and housing partners, plus agents for Vrbo/Zillow/TurboTenant listings, photo sync and bulk Hospitable changes. Partner outreach estimated at about 45 hours by hand took about 4 hours of measured working time, excluding breaks.
+- [Listings from an intake form](https://transcendfrontiers.com/work/listings-from-intake-form/): browser agents that turn a property owner's intake questionnaire into published listings on Vrbo, Zillow Rental Manager and TurboTenant, including titles, descriptions, photos, fees, rules and post-publish fixes, with a person approving each publish. Estimated at about 3 hours per property by hand, down to about 30 minutes of a person's time.
 
 ## Apps
 

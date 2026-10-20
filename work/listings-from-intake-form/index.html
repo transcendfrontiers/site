@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NYHJJJXXJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3NYHJJJXXJ');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rental Listing Automation Case Study: Vrbo, Zillow and TurboTenant Listings from an Intake Form | Transcend Frontiers</title>
+  <meta name="description" content="How Transcend Frontiers built AI browser agents that turn a property intake form into published listings on Vrbo, Zillow Rental Manager and TurboTenant. About 3 hours of listing work per property, down to about 30 minutes of a person’s time.">
+  <link rel="canonical" href="https://transcendfrontiers.com/work/listings-from-intake-form/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="Transcend Frontiers" />
+  <meta name="theme-color" content="#1e1815" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Transcend Frontiers" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://transcendfrontiers.com/work/listings-from-intake-form/" />
+  <meta property="og:title" content="Case study: one intake form, three published rental listings" />
+  <meta property="og:description" content="AI browser agents that build Vrbo, Zillow and TurboTenant listings from an owner’s property questionnaire, with a person approving every publish." />
+  <meta property="og:image" content="https://transcendfrontiers.com/img/share-card-landscape.png" />
+  <meta property="og:image:width" content="2400" />
+  <meta property="og:image:height" content="1260" />
+  <meta property="og:image:alt" content="Transcend Frontiers: we build websites, apps and automations for small businesses" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case study: one intake form, three published rental listings" />
+  <meta name="twitter:description" content="AI browser agents that build Vrbo, Zillow and TurboTenant listings from an owner’s property questionnaire, with a person approving every publish." />
+  <meta name="twitter:image" content="https://transcendfrontiers.com/img/share-card-landscape.png" />
+  <meta name="twitter:image:alt" content="Transcend Frontiers: we build websites, apps and automations for small businesses" />
+  <link rel="alternate" type="text/plain" title="LLM summary" href="https://transcendfrontiers.com/llms.txt" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://transcendfrontiers.com/work/listings-from-intake-form/#article",
+        "headline": "One intake form, three published rental listings",
+        "alternativeHeadline": "Rental listing automation case study",
+        "description": "How Transcend Frontiers built AI browser agents for a corporate housing company that turn an owner's property questionnaire into published listings on Vrbo, Zillow Rental Manager and TurboTenant, including titles, descriptions, photos, fees, rules and post-publish fixes. Listing work estimated at about 3 hours per property by hand takes about 30 minutes of a person's time with the agents.",
+        "url": "https://transcendfrontiers.com/work/listings-from-intake-form/",
+        "mainEntityOfPage": "https://transcendfrontiers.com/work/listings-from-intake-form/",
+        "image": "https://transcendfrontiers.com/img/share-card-landscape.png",
+        "inLanguage": "en",
+        "articleSection": "Case study",
+        "keywords": "rental listing automation, property management automation, vacation rental listing, furnished rental, corporate housing, AI agents, browser automation, Vrbo, Zillow Rental Manager, TurboTenant, intake form",
+        "about": [
+          { "@type": "Thing", "name": "Workflow automation" },
+          { "@type": "Thing", "name": "AI agents" },
+          { "@type": "Thing", "name": "Property management" },
+          { "@type": "Thing", "name": "Rental listings" }
+        ],
+        "author": { "@id": "https://transcendfrontiers.com/#organization" },
+        "publisher": { "@id": "https://transcendfrontiers.com/#organization" },
+        "isPartOf": { "@id": "https://transcendfrontiers.com/#website" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://transcendfrontiers.com/#organization",
+        "name": "Transcend Frontiers",
+        "url": "https://transcendfrontiers.com/",
+        "email": "hello@transcendfrontiers.com"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://transcendfrontiers.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Rental listing automation case study", "item": "https://transcendfrontiers.com/work/listings-from-intake-form/" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='7' fill='%231e1815'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%238c1d2e'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:        #ffffff;
+      --cream:     #f5f2ec;
+      --cream-2:   #ebe5db;
+      --ink:       #24221f;
+      --taupe:     #7a6e62;
+      --muted:     #5f5953;
+      --rule:      #e4ded4;
+      --espresso:  #1e1815;
+      --on-dark:   #f3eee6;
+      --on-dark-2: #b3a99d;
+      --accent:    #8c1d2e;
+      --accent-dk: #6f1523;
+
+      --sans:  'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+      --serif: 'Newsreader', Georgia, serif;
+      --wrap:  1240px;
+      --gut:   clamp(16px, 5vw, 64px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    ::selection { background: var(--accent); color: #fff; }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gut); }
+
+    /* ── Type ── */
+    .label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+    .h-xl, .h-lg {
+      font-weight: 500;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .h-xl {
+      font-size: clamp(2.5rem, 5.6vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+    .h-lg {
+      font-size: clamp(2rem, 4.2vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+    .tone { color: var(--taupe); }
+    .lede {
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 46px;
+      padding: 0 24px;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 3px;
+      border: 1px solid transparent;
+      transition: background .15s, color .15s, border-color .15s;
+      white-space: nowrap;
+    }
+    .btn-accent { background: var(--accent); color: #fff; }
+    .btn-accent:hover { background: var(--accent-dk); }
+    .btn-line { border-color: currentColor; }
+    .btn-line:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+    .logo {
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; gap: 34px; }
+    .nav-links a {
+      font-size: 15px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav .btn { height: 40px; padding: 0 18px; }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      margin: 0 clamp(8px, 1.6vw, 24px);
+      border-radius: 18px;
+      background: var(--espresso);
+      color: var(--on-dark);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .22;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .hero-inner {
+      padding-top: clamp(72px, 8vw, 116px);
+      padding-bottom: clamp(48px, 6vw, 72px);
+    }
+    .hero .label { color: var(--on-dark-2); }
+    .hero h1 {
+      margin: 22px 0 28px;
+      color: var(--on-dark);
+      max-width: 15ch;
+    }
+    .hero h1 .tone { color: #a8998a; }
+    .hero .lede { color: var(--on-dark-2); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: clamp(48px, 6vw, 80px);
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+    .stat {
+      padding: 26px 24px 0 0;
+    }
+    .stat + .stat { padding-left: 24px; border-left: 1px solid rgba(255,255,255,.14); }
+    .stat b {
+      display: block;
+      font-weight: 500;
+      font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--on-dark);
+    }
+    .stat.hl b { color: #e7a5ae; }
+    .stat span { display: block; margin-top: 12px; font-size: 14px; color: var(--on-dark-2); max-width: 22ch; }
+
+    /* ── Sections ── */
+    section { padding: clamp(72px, 10vw, 128px) 0; }
+    .sec-head { margin-bottom: clamp(40px, 5vw, 64px); }
+    .sec-head .label { margin-bottom: 22px; }
+    .sec-head .lede { margin-top: 22px; }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+      gap: clamp(32px, 6vw, 96px);
+    }
+    .prose p { color: var(--muted); }
+    .prose p + p { margin-top: 18px; }
+    .prose strong { color: var(--ink); font-weight: 600; }
+
+    /* ── Agents ── */
+    .agents {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--rule);
+      border-left: 1px solid var(--rule);
+    }
+    .agent {
+      padding: 30px 28px 32px;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .agent.lead { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .agent small {
+      display: block;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 14px;
+    }
+    .agent.lead small { color: rgba(255,255,255,.7); }
+    .agent h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .agent p { font-size: 16px; color: var(--muted); }
+    .agent.lead p { color: rgba(255,255,255,.86); }
+
+    /* ── Workflow steps ── */
+    .flow-sec { background: var(--espresso); color: var(--on-dark); }
+    .flow-sec .label { color: var(--on-dark-2); }
+    .flow-sec .h-lg { color: var(--on-dark); }
+    .flow-sec .tone { color: #a8998a; }
+    .flow-sec .lede { color: var(--on-dark-2); }
+    .steps { list-style: none; border-top: 1px solid rgba(255,255,255,.14); }
+    .step {
+      display: grid;
+      grid-template-columns: 120px 1fr 1.4fr;
+      gap: 32px;
+      padding: 30px 0;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+    .step-n { font-size: 14px; color: var(--on-dark-2); font-weight: 500; }
+    .step h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; }
+    .step p { color: var(--on-dark-2); font-size: 16px; }
+    .step .who {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #e7a5ae;
+    }
+
+    /* ── Time table ── */
+    .time-sec { background: var(--cream); }
+    .ttable {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--cream-2);
+      border-radius: 14px;
+      overflow: hidden;
+      font-size: 16px;
+    }
+    .ttable th, .ttable td {
+      text-align: left;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+    .ttable thead th {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+    .ttable td:first-child { font-weight: 600; white-space: nowrap; }
+    .ttable td:nth-child(2) { color: var(--muted); }
+    .ttable .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .ttable tfoot td { border-bottom: 0; font-weight: 600; }
+    .ttable tfoot tr:first-child td { border-top: 1px solid var(--ink); }
+    .ttable tfoot .actual td { background: var(--accent); color: #fff; }
+    .ttable tfoot .actual td:nth-child(2) { color: rgba(255,255,255,.86); font-weight: 400; }
+
+    .bars { margin-top: 40px; display: grid; gap: 14px; }
+    .bar { display: grid; grid-template-columns: 170px 1fr; gap: 16px; align-items: center; font-size: 15px; }
+    .bar-track { height: 34px; }
+    .bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--cream-2);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .bar.fast .bar-fill { background: var(--accent); color: #fff; }
+
+    .method {
+      margin-top: 28px;
+      padding: 22px 28px;
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      background: #fff;
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .method strong { color: var(--accent); font-weight: 600; }
+
+    /* ── Guardrails ── */
+    .rules { list-style: none; border-top: 1px solid var(--ink); }
+    .rules li {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 32px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .rules h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+    .rules p { color: var(--muted); font-size: 16px; }
+
+    /* ── Contact ── */
+    .contact-sec { border-top: 1px solid var(--rule); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 60px;
+      align-items: end;
+    }
+    .contact-grid .h-xl { margin-top: 22px; }
+    .contact-card { border: 1px solid var(--rule); padding: 32px; }
+    .contact-card p { color: var(--muted); font-size: 16px; margin-bottom: 26px; }
+
+    /* ── Footer ── */
+    footer { border-top: 1px solid var(--rule); }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 28px;
+      padding-bottom: 28px;
+      font-size: 14px;
+      color: var(--taupe);
+    }
+    footer nav { display: flex; gap: 26px; flex-wrap: wrap; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+      .stat { padding-bottom: 26px; }
+      .split { grid-template-columns: 1fr; }
+      .agents { grid-template-columns: 1fr 1fr; }
+      .step { grid-template-columns: 1fr; gap: 10px; }
+      .rules li { grid-template-columns: 1fr; gap: 8px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ttable td:nth-child(2), .ttable th:nth-child(2) { display: none; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .agents { grid-template-columns: 1fr; }
+      .ttable th, .ttable td { padding: 14px 16px; }
+      .ttable td:first-child { white-space: normal; }
+      .bar { grid-template-columns: 1fr; gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    /* ── Related ── */
+    .related {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 30px 32px;
+      border: 1px solid var(--rule);
+      text-decoration: none;
+      transition: border-color .15s;
+    }
+    .related:hover { border-color: var(--ink); }
+    .related small {
+      display: block;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 10px;
+    }
+    .related h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; }
+    .related p { margin-top: 8px; font-size: 16px; color: var(--muted); }
+    .related svg { flex: none; width: 24px; height: 24px; }
+    @media (max-width: 900px) { .agents.three { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="/">Transcend Frontiers</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#services">Services</a>
+        <a href="/#apps">Our apps</a>
+        <a href="/#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-accent" href="#contact">Start a project</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="hero" style="padding:0">
+      <div class="wrap hero-inner">
+        <span class="label">Case study · Real estate · Listing automation</span>
+        <h1 class="h-xl">One intake form, <span class="tone">three published listings.</span></h1>
+        <p class="lede">A corporate housing company sends every new property owner the same questionnaire. We built browser agents that turn the answers into finished listings on Vrbo, Zillow Rental Manager and TurboTenant, and stop for a person before anything goes live.</p>
+
+        <div class="stats">
+          <div class="stat"><b>~3 hrs</b><span>estimated listing work per property, by hand</span></div>
+          <div class="stat hl"><b>~30 min</b><span>of a person’s time per property with the agents</span></div>
+          <div class="stat"><b>3</b><span>platforms listed from one form</span></div>
+          <div class="stat"><b>20–40</b><span>screens in each platform’s listing wizard</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── The problem ── -->
+    <section>
+      <div class="wrap split">
+        <div>
+          <span class="label">The problem</span>
+          <h2 class="h-lg" style="margin-top:22px">The same facts, <span class="tone">typed three times.</span></h2>
+        </div>
+        <div class="prose">
+          <p>The client rents furnished homes, condos and a studio. Each one goes on Vrbo as a nightly stay, and on Zillow and TurboTenant as a furnished month-to-month rental for traveling nurses, military families, contractors and people relocating for work.</p>
+          <p>That means three wizards per property, each with <strong>20 to 40 screens</strong> asking for the same rent, deposit, fees, rules, amenities and photos in a different order. Every site also has its own traps. Vrbo’s wizard won’t take the real minimum stay, so it has to be fixed after publishing. Zillow quietly switches a month-to-month lease to one year. TurboTenant wants a single unit filed as a condo, never an apartment.</p>
+          <p>Done by hand, details drift between sites. When we audited the portfolio’s live listings, we found one-bedroom units described as having two bedrooms, one home listed as sleeping 8, 10 and 14 on different sites, and deposits that didn’t match.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── What it builds ── -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">What we built</span>
+          <h2 class="h-lg">One agent per platform, <span class="tone">one form for all three.</span></h2>
+          <p class="lede">Each agent is a written playbook that drives a real browser session. It was built from screen recordings of the work being done by hand, with every field label checked against the real screens.</p>
+        </div>
+        <div class="agents three">
+          <div class="agent">
+            <small>Nightly stays</small>
+            <h3>Vrbo</h3>
+            <p>Runs the full listing wizard, then the property editor and calendar: the real minimum stay, fees, 24-hour booking review and the welcome guide.</p>
+          </div>
+          <div class="agent">
+            <small>Furnished monthly</small>
+            <h3>Zillow Rental Manager</h3>
+            <p>Rent and costs, screening criteria, pet policy, lease terms, tour settings and listing contact, with the lease length checked before publishing.</p>
+          </div>
+          <div class="agent">
+            <small>Furnished monthly</small>
+            <h3>TurboTenant</h3>
+            <p>Leasing basics, permissions, utilities, amenities, description and photos through to marketing on, so the listing goes out to partner sites.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Workflow ── -->
+    <section class="flow-sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">How a listing run works</span>
+          <h2 class="h-lg">The agent fills the screens. <span class="tone">A person approves the listing.</span></h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-n">01</span>
+            <h3>Read the form once</h3>
+            <p>The agent reads the owner’s questionnaire, maps each answer to the platform’s fields and fills the rest from the company’s house defaults, like the listing contact and renters insurance.</p>
+          </li>
+          <li class="step">
+            <span class="step-n">02</span>
+            <h3>Ask about the gaps</h3>
+            <div>
+              <p>It never guesses the facts that matter: address, bedrooms and bathrooms, rent, deposit, pets and parking. If the form is silent on one, it asks. Owners often leave parking blank, and a garage in a photo doesn’t mean a guest can park in it.</p>
+              <span class="who">Human step</span>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-n">03</span>
+            <h3>Write the title and description</h3>
+            <p>It writes copy in the company’s style for each audience, a vacation stay on Vrbo and a flexible furnished rental on the other two, and checks nearby landmarks with a web search instead of making them up.</p>
+          </li>
+          <li class="step">
+            <span class="step-n">04</span>
+            <h3>Fill every screen</h3>
+            <p>It works through the wizard, uploads photos in room-by-room order, and reads each value back from the page after setting it. One dropdown looked set but quietly reverted, so now every field gets checked.</p>
+          </li>
+          <li class="step">
+            <span class="step-n">05</span>
+            <h3>Stop before Publish</h3>
+            <div>
+              <p>Publishing is the one step that can’t be undone, so the agent stops there. Its summary sorts every field into three groups: from the form, a house default, or flagged for the owner.</p>
+              <span class="who">Human step</span>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-n">06</span>
+            <h3>Fix what the wizard got wrong</h3>
+            <p>After publishing, it goes back for the settings the wizard can’t take or gets wrong: the real minimum stay and booking type on Vrbo, and the lease length on Zillow.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- ── Time saved ── -->
+    <section class="time-sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">Time saved</span>
+          <h2 class="h-lg">Where three hours a property <span class="tone">would have gone.</span></h2>
+          <p class="lede">We estimated what it takes someone who already knows these platforms to list one property on all three by hand, then what’s left for a person once the agents do the screens.</p>
+        </div>
+
+        <table class="ttable">
+          <thead>
+            <tr><th scope="col">Work</th><th scope="col">What it involves</th><th scope="col" class="num">By hand</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Intake and gaps</td><td>Reading the questionnaire, then getting answers to what it leaves out, like parking, pet fees and screening criteria</td><td class="num">10–15 min</td></tr>
+            <tr><td>Titles and descriptions</td><td>Three versions: a nightly stay for Vrbo and a furnished monthly rental for Zillow and TurboTenant</td><td class="num">20–30 min</td></tr>
+            <tr><td>Photos</td><td>Sorting about 40 photos into rooms, then uploading and ordering them on each platform</td><td class="num">25–35 min</td></tr>
+            <tr><td>Vrbo</td><td>About 20 wizard screens, then the property editor and calendar for what the wizard can’t set</td><td class="num">45–60 min</td></tr>
+            <tr><td>Zillow Rental Manager</td><td>Wizard, screening criteria, tour settings and phone verification</td><td class="num">20–30 min</td></tr>
+            <tr><td>TurboTenant</td><td>Wizard from leasing basics through photos to marketing on</td><td class="num">15–20 min</td></tr>
+            <tr><td>Checking the result</td><td>Opening each live listing and fixing defaults that changed on their own</td><td class="num">10–15 min</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td>Estimate by hand</td><td>Range 2.5–3.5 hours per property</td><td class="num">~3 h</td></tr>
+            <tr class="actual"><td>With the agents</td><td>A person’s time: answering gaps, approving three publishes, signing in when asked</td><td class="num">~30 min</td></tr>
+          </tfoot>
+        </table>
+
+        <div class="bars" role="img" aria-label="Bar chart: about 3 hours per property by hand compared with about 30 minutes of a person's time with the agents">
+          <div class="bar"><span>By hand (estimate)</span><div class="bar-track"><div class="bar-fill" style="width:100%">~3 h</div></div></div>
+          <div class="bar fast"><span>With the agents</span><div class="bar-track"><div class="bar-fill" style="width:16.7%;min-width:80px">~30 min</div></div></div>
+        </div>
+
+        <p class="method"><strong>How we estimated.</strong> Both figures are estimates, not log measurements. The by-hand times come from the screen recordings used to build the agents and the number of screens on each platform. In one recording, TurboTenant’s screens from leasing basics to photos took about 8½ minutes for someone with every answer ready, before writing a description or uploading a photo. The 30 minutes counts only what needs a person: answering the agent’s questions (5–10 minutes), reading three pre-publish summaries (10–15) and signing in or verifying a phone number when a site asks (5–10). The agents’ own run time isn’t counted, because nobody has to watch it. Across nine properties, that’s roughly 27 hours by hand against about 4½, around 6× less.</p>
+      </div>
+    </section>
+
+
+    <!-- ── Guardrails ── -->
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">Guardrails</span>
+          <h2 class="h-lg">Nothing goes live <span class="tone">without a yes.</span></h2>
+        </div>
+        <ul class="rules">
+          <li><h3>One approval, in the right place</h3><p>The agent runs the whole wizard on its own and stops once, right before Publish, with a summary of where every value came from.</p></li>
+          <li><h3>A short list it never guesses</h3><p>Address, bed and bath count, rent, deposit, pets and parking always come from the owner. Everything else falls back to a house default and is reported as one.</p></li>
+          <li><h3>Trust the screen, not the playbook</h3><p>These sites change their layouts often. When a screen doesn’t match the playbook, the agent stops and asks instead of clicking where a button used to be.</p></li>
+          <li><h3>A person handles identity</h3><p>The agent never gets past a login page or a bot check on its own, and never tries a password. Those go to a person.</p></li>
+          <li><h3>Gaps go back into the form</h3><p>Every question the agents had to ask became a question on the owner’s questionnaire, which grew from 34 questions to almost 90, so the next owner answers it up front.</p></li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ── Related ── -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <a class="related" href="/work/corporate-housing-automation/">
+          <div>
+            <small>Related case study · Same client</small>
+            <h3>45 hours of partner outreach, done in about 4</h3>
+            <p>The agents that submit the same nine properties to 53 relocation and housing partners.</p>
+          </div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ── Contact ── -->
+    <section class="contact-sec" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <span class="label">Contact</span>
+          <h2 class="h-xl">Listing the same place in a lot of&nbsp;places?</h2>
+        </div>
+        <div class="contact-card">
+          <p>If your team types the same property details into several listing sites, tell us how it’s done today and we’ll tell you what could be automated.</p>
+          <a class="btn btn-accent" href="mailto:hello@transcendfrontiers.com?subject=Listing%20automation">Email us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>&copy; 2026 Transcend Frontiers</span>
+      <nav aria-label="Footer">
+        <a href="/#services">Services</a>
+        <a href="/#apps">Apps</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="mailto:hello@transcendfrontiers.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
