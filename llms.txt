@@ -8,8 +8,12 @@ Contact: hello@transcendfrontiers.com
 
 - **Websites:** marketing sites and landing pages built in Webflow, Framer or custom code, with analytics and search setup.
 - **iPhone apps:** native iOS apps built in SwiftUI, including widgets, notifications, subscriptions, in-app purchases and App Store launch.
-- **Workflow automation:** integrations that connect forms, CRMs, spreadsheets, email and Slack so routine work happens automatically.
+- **Workflow automation and AI agents:** integrations that connect forms, CRMs, spreadsheets, email and Slack, plus AI browser agents that handle repetitive web work like filling out partner and listing forms, so routine work happens automatically. Real estate and property management workflows are a focus (listings, photo updates, property-manager settings, partner outreach).
 - **Process:** a ~30 minute intro call (or email), a written proposal with fixed scope, price and timeline, an iterative build with early feedback, then a handoff with logins, documentation and a walkthrough. Ongoing support is available.
+
+## Case studies
+
+- [Corporate housing automation](https://transcendfrontiers.com/work/corporate-housing-automation/): browser agents that list a corporate housing company's nine furnished rentals with 53 relocation and housing partners, plus agents for Vrbo/Zillow/TurboTenant listings, photo sync and bulk Hospitable changes. Partner outreach estimated at about 45 hours by hand took about 4 hours of measured working time, excluding breaks.
 
 ## Apps
 

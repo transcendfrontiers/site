@@ -51,6 +51,9 @@
           "iOS app development",
           "SwiftUI",
           "Workflow automation",
+          "AI agents",
+          "Browser automation",
+          "Real estate and property management automation",
           "CRM integrations"
         ],
         "contactPoint": {
@@ -114,7 +117,8 @@
               "itemOffered": {
                 "@type": "Service",
                 "name": "Workflow automation",
-                "description": "Integrations that connect forms, CRMs, spreadsheets, email and Slack so routine work happens automatically."
+                "description": "Integrations and AI browser agents that connect forms, CRMs, spreadsheets, email and Slack, and fill out repetitive web forms, so routine work happens automatically. Example: listing and partner outreach automation for a corporate housing company, cutting about 45 hours of work to about 4.",
+                "url": "https://transcendfrontiers.com/work/corporate-housing-automation/"
               }
             }
           ]
@@ -463,6 +467,29 @@
       font-size: 16px;
     }
     .cmp-note strong { color: var(--accent); font-weight: 600; }
+    .case {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      margin-top: 20px;
+      padding: clamp(24px, 3vw, 36px) clamp(24px, 3.5vw, 44px);
+      border-radius: 14px;
+      background: var(--espresso);
+      color: var(--on-dark);
+      text-decoration: none;
+    }
+    .case small {
+      display: block;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--on-dark-2);
+      margin-bottom: 10px;
+    }
+    .case h3 { font-size: clamp(1.3rem, 2.2vw, 1.75rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; }
+    .case p { margin-top: 10px; font-size: 16px; color: var(--on-dark-2); max-width: 640px; }
+    .case:hover .arrow-btn { background: var(--accent); color: #fff; }
 
     /* ── Apps: fanned cards (Aloa) ── */
     .fan {
@@ -782,6 +809,14 @@
             </ul>
           </div>
         </div>
+        <a class="case" href="/work/corporate-housing-automation/">
+          <div>
+            <small>Case study · Real estate</small>
+            <h3>45 hours of partner outreach, done in about 4</h3>
+            <p>Browser agents that list nine furnished rentals with 53 relocation and housing partners, with a person approving every step that needs one.</p>
+          </div>
+          <span class="arrow-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
         <p class="cmp-note"><strong>Not sure what could be automated?</strong> Send us a short description of how the work gets done today, and we’ll tell you what we would change.</p>
       </div>
     </section>
