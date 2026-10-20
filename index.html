@@ -427,6 +427,35 @@
     }
     .stair-foot { justify-content: flex-end; }
 
+    /* ── Small studio panel ── */
+    .small {
+      margin-top: clamp(40px, 5vw, 64px);
+      padding: clamp(32px, 4.5vw, 56px);
+      border-radius: 18px;
+      background: var(--espresso);
+      color: var(--on-dark);
+    }
+    .small .label { color: var(--on-dark-2); margin-bottom: 18px; }
+    .small h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      max-width: 760px;
+      text-wrap: balance;
+    }
+    .small h2 .tone { color: #a8998a; }
+    .small-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: clamp(32px, 4vw, 48px);
+      list-style: none;
+    }
+    .small-grid li { padding-top: 20px; border-top: 1px solid rgba(255,255,255,.14); }
+    .small-grid h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 10px; }
+    .small-grid p { font-size: 16px; color: var(--on-dark-2); }
+
     /* ── Compare (Jumpseat) ── */
     .compare-sec { background: var(--cream); }
     .compare {
@@ -660,6 +689,7 @@
       .hero-phones img:last-child { position: static; width: min(40%, 210px); }
       .hero-phones img:first-child { margin-top: 40px; margin-right: -24px; }
       .compare { grid-template-columns: 1fr; }
+      .small-grid { grid-template-columns: 1fr; gap: 24px; }
       .fan { flex-direction: column; align-items: center; gap: 20px; }
       .app + .app { margin-left: 0; }
       .app:nth-child(n) { transform: none; width: 100%; max-width: 420px; }
@@ -709,7 +739,7 @@
         <div>
           <span class="label">Web development and automation</span>
           <h1 class="h-xl">We build websites, apps and automations <span class="tone">for small businesses.</span></h1>
-          <p class="lede">Transcend Frontiers is a small software studio. We build websites, iOS apps, workflow automations and custom AI agents that connect the tools you already use and take repetitive work off your plate. We also make and maintain a few apps of our own.</p>
+          <p class="lede">Transcend Frontiers is a small, hands-on software studio. We build websites, iOS apps, workflow automations and custom AI agents that connect the tools you already use and take repetitive work off your plate. We also make and maintain a few apps of our own.</p>
           <div class="hero-ctas">
             <a class="btn btn-accent" href="#contact">Start a project</a>
             <a class="btn btn-line" href="#services">Our services</a>
@@ -780,6 +810,25 @@
             <div class="stair-foot"><span class="arrow-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
           </a>
         </div>
+
+        <div class="small">
+          <span class="label">Small on purpose</span>
+          <h2>We keep the studio small <span class="tone">so every client gets our full attention.</span></h2>
+          <ul class="small-grid">
+            <li>
+              <h3>Replies within 48 hours</h3>
+              <p>Every email gets a real answer within 48 hours, from someone who knows your project.</p>
+            </li>
+            <li>
+              <h3>Quick turnarounds</h3>
+              <p>We take on a limited number of projects at a time, so yours never sits in a queue. Feedback and fixes come back fast.</p>
+            </li>
+            <li>
+              <h3>Hands-on, start to finish</h3>
+              <p>No account managers or handoffs. The people you talk to are the people building your project, through launch and ongoing support.</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -816,7 +865,7 @@
           <div>
             <small>Case study · Real estate</small>
             <h3>45 hours of partner outreach, done in about 4</h3>
-            <p>Browser agents that list nine furnished rentals with 53 relocation and housing partners, with a person approving every step that needs one.</p>
+            <p>Browser agents that list nine furnished rentals with 53 insurance housing, relocation and corporate housing partners, including ALE Solutions, Sedgwick, CRS Temporary Housing and Altair Global, with a person approving every step that needs one.</p>
           </div>
           <span class="arrow-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
@@ -824,7 +873,7 @@
           <div>
             <small>Case study · Real estate</small>
             <h3>One intake form, three published listings</h3>
-            <p>Browser agents that turn an owner’s questionnaire into finished Vrbo, Zillow and TurboTenant listings, cutting about 3 hours of work per property to about 30 minutes.</p>
+            <p>Browser agents that turn an owner’s questionnaire into finished listings on Vrbo, Zillow Rental Manager and TurboTenant, which reach Trulia, HotPads, Apartments.com, Realtor.com and more. About 3 hours of work per property, down to about 30 minutes.</p>
           </div>
           <span class="arrow-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
@@ -936,7 +985,7 @@
           <h2 class="h-xl">Have a project in&nbsp;mind?</h2>
         </div>
         <div class="contact-card">
-          <p>Email us a few details about your business and what you’d like built. We read and reply to every message.</p>
+          <p>Email us a few details about your business and what you’d like built. We read every message and reply within 48 hours.</p>
           <a class="contact-mail" href="mailto:hello@transcendfrontiers.com">hello@transcendfrontiers.com</a>
           <a class="btn btn-accent" href="mailto:hello@transcendfrontiers.com?subject=New%20project">Email us</a>
         </div>

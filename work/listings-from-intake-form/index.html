@@ -50,7 +50,7 @@
         "image": "https://transcendfrontiers.com/img/share-card-landscape.png",
         "inLanguage": "en",
         "articleSection": "Case study",
-        "keywords": "rental listing automation, property management automation, vacation rental listing, furnished rental, corporate housing, AI agents, browser automation, Vrbo, Zillow Rental Manager, TurboTenant, intake form",
+        "keywords": "rental listing automation, property management automation, vacation rental listing, furnished rental, corporate housing, AI agents, browser automation, Vrbo, Zillow Rental Manager, TurboTenant, Trulia, HotPads, Apartments.com, Realtor.com, Zumper, intake form",
         "about": [
           { "@type": "Thing", "name": "Workflow automation" },
           { "@type": "Thing", "name": "AI agents" },
@@ -234,7 +234,7 @@
     .hero h1 {
       margin: 22px 0 28px;
       color: var(--on-dark);
-      max-width: 15ch;
+      max-width: 20ch;
     }
     .hero h1 .tone { color: #a8998a; }
     .hero .lede { color: var(--on-dark-2); }
@@ -476,6 +476,17 @@
     .related p { margin-top: 8px; font-size: 16px; color: var(--muted); }
     .related svg { flex: none; width: 24px; height: 24px; }
     @media (max-width: 900px) { .agents.three { grid-template-columns: 1fr; } }
+    /* ── Platform / partner names ── */
+    .reach { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+    .reach b { display: block; font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--taupe); margin-bottom: 4px; }
+    .plist { list-style: none; border-top: 1px solid var(--ink); }
+    .plist > li { display: grid; grid-template-columns: 240px 1fr; gap: 28px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
+    .plist h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+    .chips { display: flex; flex-wrap: wrap; align-items: flex-start; align-content: flex-start; gap: 8px; list-style: none; }
+    .chips li { font-size: 14px; padding: 5px 12px; border: 1px solid var(--rule); border-radius: 999px; color: var(--muted); background: #fff; }
+    .plist-note { margin-top: 20px; font-size: 14px; color: var(--taupe); }
+    @media (max-width: 900px) { .plist > li { grid-template-columns: 1fr; gap: 12px; } }
+
   </style>
 </head>
 <body>
@@ -542,16 +553,19 @@
             <small>Nightly stays</small>
             <h3>Vrbo</h3>
             <p>Runs the full listing wizard, then the property editor and calendar: the real minimum stay, fees, 24-hour booking review and the welcome guide.</p>
+            <p class="reach"><b>Where it shows up</b>Vrbo, plus Expedia and Travelocity for eligible listings</p>
           </div>
           <div class="agent">
             <small>Furnished monthly</small>
             <h3>Zillow Rental Manager</h3>
             <p>Rent and costs, screening criteria, pet policy, lease terms, tour settings and listing contact, with the lease length checked before publishing.</p>
+            <p class="reach"><b>Where it shows up</b>Zillow, Trulia and HotPads</p>
           </div>
           <div class="agent">
             <small>Furnished monthly</small>
             <h3>TurboTenant</h3>
             <p>Leasing basics, permissions, utilities, amenities, description and photos through to marketing on, so the listing goes out to partner sites.</p>
+            <p class="reach"><b>Where it shows up</b>TurboTenant, Apartments.com, Realtor.com, Zumper, Rent.com, Redfin and more</p>
           </div>
         </div>
       </div>

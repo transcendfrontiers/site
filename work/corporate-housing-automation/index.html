@@ -50,7 +50,7 @@
         "image": "https://transcendfrontiers.com/img/share-card-landscape.png",
         "inLanguage": "en",
         "articleSection": "Case study",
-        "keywords": "real estate automation, property management automation, corporate housing, AI agents, browser automation, workflow automation, Vrbo, Zillow Rental Manager, TurboTenant, Hospitable, relocation partners",
+        "keywords": "real estate automation, property management automation, corporate housing, AI agents, browser automation, workflow automation, Vrbo, Zillow Rental Manager, TurboTenant, Hospitable, relocation partners, insurance temporary housing, ALE Solutions, Sedgwick, CRS Temporary Housing, Cartus, Altair Global, Furnished Finder, Travelers Haven",
         "about": [
           { "@type": "Thing", "name": "Workflow automation" },
           { "@type": "Thing", "name": "AI agents" },
@@ -234,7 +234,7 @@
     .hero h1 {
       margin: 22px 0 28px;
       color: var(--on-dark);
-      max-width: 15ch;
+      max-width: 20ch;
     }
     .hero h1 .tone { color: #a8998a; }
     .hero .lede { color: var(--on-dark-2); }
@@ -302,6 +302,17 @@
     .agent.lead p { color: rgba(255,255,255,.86); }
 
     /* ── Workflow steps ── */
+    /* ── Platform / partner names ── */
+    .reach { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+    .reach b { display: block; font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--taupe); margin-bottom: 4px; }
+    .plist { list-style: none; border-top: 1px solid var(--ink); }
+    .plist > li { display: grid; grid-template-columns: 240px 1fr; gap: 28px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
+    .plist h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+    .chips { display: flex; flex-wrap: wrap; align-items: flex-start; align-content: flex-start; gap: 8px; list-style: none; }
+    .chips li { font-size: 14px; padding: 5px 12px; border: 1px solid var(--rule); border-radius: 999px; color: var(--muted); background: #fff; }
+    .plist-note { margin-top: 20px; font-size: 14px; color: var(--taupe); }
+    @media (max-width: 900px) { .plist > li { grid-template-columns: 1fr; gap: 12px; } }
+
     .flow-sec { background: var(--espresso); color: var(--on-dark); }
     .flow-sec .label { color: var(--on-dark-2); }
     .flow-sec .h-lg { color: var(--on-dark); }
@@ -500,6 +511,41 @@
           <p>The next step was getting in front of the companies that place those guests: relocation firms, insurance housing providers and corporate housing networks. There were <strong>53 of them on the list</strong>, and almost every one has its own sign-up flow. Some want one form per property, some want a spreadsheet template, some charge a listing fee, and some have no online route at all.</p>
           <p>Every form asks for the same facts in a slightly different way: rent, deposit, square footage, move-in date, pet fees, parking, cooling, flooring, whether there’s a walk-in shower. Done by hand, that is weeks of copy and paste, and the details drift out of sync between sites.</p>
         </div>
+      </div>
+    </section>
+
+
+    <!-- ── Partner list ── -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">The partner list</span>
+          <h2 class="h-lg">Who places mid-term guests, <span class="tone">and how each one takes listings.</span></h2>
+          <p class="lede">The 53 partners fall into five groups. Each group finds guests differently, so each one wants the property details in a different shape.</p>
+        </div>
+        <ul class="plist">
+          <li>
+            <h3>Insurance temporary housing</h3>
+            <ul class="chips"><li>ALE Solutions</li><li>Sedgwick</li><li>CRS Temporary Housing</li><li>Assured Relocation</li><li>BuildMP</li><li>Catale Preferred Landlord Network</li><li>Paradise Point Housing</li><li>MyKey Global Accommodations</li><li>HQ Housing Pros</li><li>NuBNB</li><li>DAN Housing</li></ul>
+          </li>
+          <li>
+            <h3>Relocation and mobility</h3>
+            <ul class="chips"><li>Altair Global</li><li>Cartus</li><li>SIRVA</li><li>Graebel</li><li>Weichert Workforce Mobility</li><li>NEI Global Relocation</li><li>Global Mobility Solutions</li><li>Crown World Mobility</li><li>Relocation Match</li></ul>
+          </li>
+          <li>
+            <h3>Corporate housing</h3>
+            <ul class="chips"><li>National Corporate Housing</li><li>United Corporate Housing</li><li>CWS Corporate Housing</li><li>The Link Housing</li><li>Furnished Quarters</li><li>Churchill Living</li><li>SilverDoor</li><li>Corporate Housing by Owner</li><li>Month2Month</li><li>Key Hosting Co.</li><li>Mid Term Rental Properties</li></ul>
+          </li>
+          <li>
+            <h3>Traveling nurses and professionals</h3>
+            <ul class="chips"><li>Travelers Haven</li><li>Furnished Finder</li><li>Aya Healthcare</li><li>Vidle Housing</li><li>Clubbie</li></ul>
+          </li>
+          <li>
+            <h3>Furnished monthly rentals</h3>
+            <ul class="chips"><li>Blueground</li><li>Flatio</li><li>Landing</li><li>Anyplace</li><li>HouseStay</li><li>FLX Lease</li><li>Nomad Stays</li><li>Elysian Pads</li><li>DOMA Luxe Properties</li><li>All That Housing</li></ul>
+          </li>
+        </ul>
+        <p class="plist-note">A selection from the list. Names show the range of partners researched and contacted, not endorsements.</p>
       </div>
     </section>
 

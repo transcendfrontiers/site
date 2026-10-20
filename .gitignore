@@ -4,3 +4,4 @@ CLAUDE.md
 .env.local
 .env.*.local
 .playwright-mcp/
+.claude/settings.local.json
