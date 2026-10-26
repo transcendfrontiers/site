@@ -452,41 +452,104 @@
       margin-top: clamp(32px, 4vw, 48px);
       list-style: none;
     }
+    .custom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px 48px;
+      margin-top: clamp(40px, 5vw, 64px);
+      padding-top: 28px;
+      border-top: 1px solid var(--rule);
+    }
+    .custom p { font-size: 19px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.35; max-width: 460px; }
+    .custom p .tone { display: block; font-weight: 400; font-size: 17px; margin-top: 6px; }
+    .custom p a { color: var(--accent); text-underline-offset: 3px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; max-width: 600px; }
+    .chips li {
+      padding: 7px 14px;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      background: var(--cream);
+      font-size: 14px;
+      color: var(--muted);
+    }
     .small-grid li { padding-top: 20px; border-top: 1px solid rgba(255,255,255,.14); }
     .small-grid h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 10px; }
     .small-grid p { font-size: 16px; color: var(--on-dark-2); }
 
     /* ── Compare (Jumpseat) ── */
     .compare-sec { background: var(--cream); }
-    .compare {
+    .flow { --dot: 38px; list-style: none; }
+    .flow-step, .flow-total {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: 56px minmax(0, .8fr) minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
     }
-    .cmp {
-      border-radius: 14px;
-      padding: clamp(28px, 3.5vw, 44px);
+    .flow-step { position: relative; padding-bottom: 12px; }
+    /* connector line running through the step numbers */
+    .flow-step::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #d3c9bb;
+    }
+    .flow-step:first-child::before { top: var(--dot); }
+    .flow-step:last-child::before { bottom: calc(100% - var(--dot)); }
+    .flow-n {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      margin-top: 18px;
+      border-radius: 50%;
+      border: 1px solid #d3c9bb;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .flow-step h3 {
+      padding-top: 26px;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .flow-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 18px 20px;
+      border-radius: 12px;
       border: 1px solid var(--cream-2);
       background: #fff;
-    }
-    .cmp.dark {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-    .cmp h3 {
-      font-size: clamp(1.4rem, 2.3vw, 1.85rem);
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      margin-bottom: 26px;
-    }
-    .cmp ul { list-style: none; }
-    .cmp li {
-      padding: 16px 0;
-      border-bottom: 1px solid var(--rule);
       font-size: 16px;
     }
-    .cmp.dark li { border-color: rgba(255,255,255,.16); }
+    .flow-cell.auto { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .flow-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+    .flow-tag svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .auto .flow-tag { color: rgba(255,255,255,.78); }
+    .flow-total {
+      margin: 12px 0 clamp(40px, 5vw, 64px);
+      padding-top: 24px;
+      border-top: 1px solid var(--ink);
+    }
+    .flow-total h3 { grid-column: 2; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+    .flow-total p { font-size: clamp(1.1rem, 1.6vw, 1.3rem); font-weight: 500; letter-spacing: -0.015em; line-height: 1.3; margin-top: 8px; }
+    .flow-total .auto p, .flow-total .auto .flow-tag { color: var(--accent); }
     .cmp-note {
       margin-top: 20px;
       padding: 22px 28px;
@@ -688,7 +751,13 @@
       .hero-phones img:first-child,
       .hero-phones img:last-child { position: static; width: min(40%, 210px); }
       .hero-phones img:first-child { margin-top: 40px; margin-right: -24px; }
-      .compare { grid-template-columns: 1fr; }
+      .custom { flex-direction: column; align-items: flex-start; }
+      .flow { --dot: 20px; }
+      .flow-step, .flow-total { grid-template-columns: 40px minmax(0, 1fr); gap: 10px 16px; }
+      .flow-step { padding-bottom: 28px; }
+      .flow-n { margin-top: 0; }
+      .flow-step h3 { padding-top: 8px; }
+      .flow-step .flow-cell, .flow-total > * { grid-column: 2; }
       .small-grid { grid-template-columns: 1fr; gap: 24px; }
       .fan { flex-direction: column; align-items: center; gap: 20px; }
       .app + .app { margin-left: 0; }
@@ -737,9 +806,9 @@
     <section class="hero on-dark" id="top" style="padding:0">
       <div class="wrap hero-grid">
         <div>
-          <span class="label">Web development and automation</span>
+          <span class="label">Custom software for small businesses</span>
           <h1 class="h-xl">We build websites, apps and automations <span class="tone">for small businesses.</span></h1>
-          <p class="lede">Transcend Frontiers is a small, hands-on software studio. We build websites, iOS apps, workflow automations and custom AI agents that connect the tools you already use and take repetitive work off your plate. We also make and maintain a few apps of our own.</p>
+          <p class="lede">Transcend Frontiers is a small, hands-on software studio. We build websites, iOS apps, workflow automations and custom AI agents that connect the tools you already use and take repetitive work off your plate. Everything is built from scratch around how your business already works, with no templates or packages. We also make and maintain a few apps of our own.</p>
           <div class="hero-ctas">
             <a class="btn btn-accent" href="#contact">Start a project</a>
             <a class="btn btn-line" href="#services">Our services</a>
@@ -765,7 +834,7 @@
       <div class="wrap">
         <div class="sec-head">
           <span class="label">Services</span>
-          <h2 class="h-lg">What we can build <span class="tone">for your business.</span></h2>
+          <h2 class="h-lg">Built around your business, <span class="tone">whatever it needs.</span></h2>
         </div>
 
         <div class="stairs">
@@ -811,17 +880,30 @@
           </a>
         </div>
 
+        <div class="custom">
+          <p>These are just common starting points. <span class="tone">If you can describe it, we can probably build it. <a href="#contact">Tell us what you need</a>.</span></p>
+          <ul class="chips" aria-label="Other things we build">
+            <li>Client portals</li>
+            <li>Booking flows</li>
+            <li>Quote calculators</li>
+            <li>Inventory trackers</li>
+            <li>AI assistants</li>
+            <li>Customer intake forms</li>
+            <li>Data cleanup and migration</li>
+          </ul>
+        </div>
+
         <div class="small">
           <span class="label">Small on purpose</span>
           <h2>We keep the studio small <span class="tone">so every client gets our full attention.</span></h2>
           <ul class="small-grid">
             <li>
-              <h3>Replies within 48 hours</h3>
-              <p>Every email gets a real answer within 48 hours, from someone who knows your project.</p>
+              <h3>Made for you, not adapted</h3>
+              <p>No templates or one-size plans. Every project is designed around your tools, your steps and your customers.</p>
             </li>
             <li>
-              <h3>Quick turnarounds</h3>
-              <p>We take on a limited number of projects at a time, so yours never sits in a queue. Feedback and fixes come back fast.</p>
+              <h3>Replies within 48 hours</h3>
+              <p>Every email gets a real answer within 48 hours, from someone who knows your project. Feedback and fixes come back fast.</p>
             </li>
             <li>
               <h3>Hands-on, start to finish</h3>
@@ -839,27 +921,44 @@
         <div class="sec-head">
           <span class="label">Example</span>
           <h2 class="h-lg">What an automation project <span class="tone">can look like.</span></h2>
-          <p class="lede">Say a small business gets customer inquiries through a form on its website, and everything after that happens by hand.</p>
+          <p class="lede">Say a home cleaning company gets a quote request through its website at 9pm. Here’s what happens next, step by step, before and after automation.</p>
         </div>
-        <div class="compare">
-          <div class="cmp">
-            <h3>Before</h3>
-            <ul>
-              <li>Form submissions get forwarded to a shared inbox.</li>
-              <li>Someone copies each inquiry into a spreadsheet and the CRM.</li>
-              <li>Follow-up emails are written one at a time.</li>
-              <li>The weekly summary is put together by hand on Friday.</li>
-            </ul>
-          </div>
-          <div class="cmp dark">
-            <h3>After</h3>
-            <ul>
-              <li>Form submissions go straight into the CRM, already tagged.</li>
-              <li>The spreadsheet updates itself from the CRM.</li>
-              <li>A first reply goes out right away, and the owner gets a Slack message.</li>
-              <li>A summary email arrives every Monday morning.</li>
-            </ul>
-          </div>
+        <ol class="flow">
+          <li class="flow-step">
+            <span class="flow-n">01</span>
+            <h3>Request comes in</h3>
+            <div class="flow-cell"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/></svg>By hand · Next morning</span><p>The form email sits in a shared inbox until someone checks it.</p></div>
+            <div class="flow-cell auto"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7z"/></svg>Automated · Instant</span><p>It goes straight into the CRM, tagged by service and zip code, and the owner gets a text.</p></div>
+          </li>
+          <li class="flow-step">
+            <span class="flow-n">02</span>
+            <h3>Details get logged</h3>
+            <div class="flow-cell"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/></svg>By hand · 10 min</span><p>Someone retypes the name, address and home size into the CRM and a spreadsheet.</p></div>
+            <div class="flow-cell auto"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7z"/></svg>Automated · Instant</span><p>The spreadsheet fills itself in from the CRM.</p></div>
+          </li>
+          <li class="flow-step">
+            <span class="flow-n">03</span>
+            <h3>Customer gets a quote</h3>
+            <div class="flow-cell"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/></svg>By hand · 15 min</span><p>The owner works out a price and writes the reply from scratch.</p></div>
+            <div class="flow-cell auto"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7z"/></svg>Automated · Under a minute</span><p>A reply with an estimate based on your rates goes out right away.</p></div>
+          </li>
+          <li class="flow-step">
+            <span class="flow-n">04</span>
+            <h3>Follow-up</h3>
+            <div class="flow-cell"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/></svg>By hand · 5 min</span><p>If the customer goes quiet, someone has to remember to email again.</p></div>
+            <div class="flow-cell auto"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7z"/></svg>Automated · After 2 days</span><p>A friendly follow-up goes out after two days if there’s no answer.</p></div>
+          </li>
+          <li class="flow-step">
+            <span class="flow-n">05</span>
+            <h3>Weekly report</h3>
+            <div class="flow-cell"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/></svg>By hand · 1 hr</span><p>Friday afternoon goes to tallying up requests and bookings.</p></div>
+            <div class="flow-cell auto"><span class="flow-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7z"/></svg>Automated · Every Monday</span><p>A summary email with the week’s numbers arrives Monday morning.</p></div>
+          </li>
+        </ol>
+        <div class="flow-total">
+          <h3>Time spent</h3>
+          <div><span class="flow-tag">Before</span><p>About 30 minutes, plus an hour every Friday.</p></div>
+          <div class="auto"><span class="flow-tag">After</span><p>A reply in under a minute, with nothing retyped by hand.</p></div>
         </div>
         <a class="case" href="/work/corporate-housing-automation/">
           <div>
@@ -985,7 +1084,7 @@
           <h2 class="h-xl">Have a project in&nbsp;mind?</h2>
         </div>
         <div class="contact-card">
-          <p>Email us a few details about your business and what you’d like built. We read every message and reply within 48 hours.</p>
+          <p>Tell us what you’d like built, even if it’s unusual. A few details about your business are enough to start. We read every message and reply within 48 hours.</p>
           <a class="contact-mail" href="mailto:hello@transcendfrontiers.com">hello@transcendfrontiers.com</a>
           <a class="btn btn-accent" href="mailto:hello@transcendfrontiers.com?subject=New%20project">Email us</a>
         </div>
