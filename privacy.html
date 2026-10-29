@@ -156,6 +156,10 @@
     footer nav { display: flex; gap: 26px; flex-wrap: wrap; }
     footer a { text-decoration: none; }
     footer a:hover { color: var(--ink); }
+      /* Scale up on very wide viewports (zoomed-out browser, 4K/ultrawide) */
+    @media (min-width: 1800px) { html { zoom: 1.25; } }
+    @media (min-width: 2600px) { html { zoom: 1.6; } }
+    @media (min-width: 3600px) { html { zoom: 2; } }
   </style>
 </head>
 <body>

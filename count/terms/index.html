@@ -75,6 +75,10 @@
     .foot nav { display: flex; gap: 22px; flex-wrap: wrap; }
     .foot nav a:hover { color: var(--ink); }
     @media (max-width: 720px) { .foot { grid-template-columns: 1fr; gap: 12px; } }
+      /* Scale up on very wide viewports (zoomed-out browser, 4K/ultrawide) */
+    @media (min-width: 1800px) { html { zoom: 1.25; } }
+    @media (min-width: 2600px) { html { zoom: 1.6; } }
+    @media (min-width: 3600px) { html { zoom: 2; } }
   </style>
 </head>
 <body>
