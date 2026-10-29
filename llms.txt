@@ -32,4 +32,4 @@ Contact: hello@transcendfrontiers.com
 - [Count privacy policy](https://transcendfrontiers.com/count/privacy/)
 - [Count terms of use](https://transcendfrontiers.com/count/terms/)
 - [Fabric Lens privacy policy](https://transcendfrontiers.com/apps/fabric-lens/privacy/)
-- [Transcend Frontiers privacy policy](https://transcendfrontiers.com/privacy.html)
+- [Transcend Frontiers privacy policy](https://transcendfrontiers.com/privacy)

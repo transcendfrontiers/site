@@ -638,6 +638,19 @@
     .app-current { background: #efdcc6; color: #4a2a18; }
     .app-count   { background: #0e4a30; color: #e9f1ec; }
     .app-count .app-shot { background: rgba(255,255,255,.1); }
+    .app-badge {
+      position: absolute;
+      top: 24px; right: 24px;
+      z-index: 1;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e9f1ec;
+      color: #0e4a30;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1;
+    }
     .app-fabric  { background: #24221f; color: var(--on-dark); }
     .app-fabric .app-shot { background: #f8f2f1; align-items: center; padding: 0 22px; }
     .app-fabric .app-shot img { width: 100%; border-radius: 8px; }
@@ -1003,6 +1016,7 @@
             <p>Somatic check-ins · iOS</p>
           </a>
           <a class="app app-count" href="/count/">
+            <span class="app-badge">Coming soon to the App Store</span>
             <div class="app-shot"><img src="img/count/iphone-17-pro_setup.png" alt="Count setup screen with Hi-Lo sample cards, deck count and pace" loading="lazy"></div>
             <h3>Count</h3>
             <p>Card counting drills · iOS</p>
@@ -1029,7 +1043,7 @@
           </div>
           <div class="app-row">
             <img src="img/count-icon.png" alt="Count app icon">
-            <div><h3><a href="/count/">Count</a></h3><span class="plat">iOS</span></div>
+            <div><h3><a href="/count/">Count</a></h3><span class="plat">iOS · Coming soon</span></div>
             <p>Practice card counting for blackjack. Cards are dealt on a timer while you keep the running count, then you guess and see if you were right.</p>
             <nav aria-label="Count links"><a href="/count/terms/">Terms</a><a href="/count/privacy/">Privacy</a></nav>
           </div>
@@ -1101,7 +1115,7 @@
         <a href="#services">Services</a>
         <a href="#work">Work</a>
         <a href="#apps">Apps</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="/privacy">Privacy</a>
         <a href="mailto:hello@transcendfrontiers.com">Contact</a>
       </nav>
     </div>
