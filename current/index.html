@@ -112,7 +112,7 @@
   <meta property="og:image" content="https://transcendfrontiers.com/img/current/current-share-card-landscape.png" />
   <meta property="og:image:width" content="2400" />
   <meta property="og:image:height" content="1260" />
-  <meta property="og:image:alt" content="Current app — nervous system check-in for iPhone" />
+  <meta property="og:image:alt" content="Current app, a nervous system check-in for iPhone" />
   <meta property="og:url" content="https://transcendfrontiers.com/current/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Transcend Frontiers" />
@@ -123,7 +123,7 @@
   <meta name="twitter:title" content="Current: Nervous System Log &amp; Somatic Check-In App for iPhone" />
   <meta name="twitter:description" content="A nervous system check-in app for iPhone. Tap how you feel from a home screen widget, like alive, at ease or running on fumes, and see your patterns. No streaks." />
   <meta name="twitter:image" content="https://transcendfrontiers.com/img/current/current-share-card-landscape.png" />
-  <meta name="twitter:image:alt" content="Current app — nervous system check-in for iPhone" />
+  <meta name="twitter:image:alt" content="Current app, a nervous system check-in for iPhone" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../img/current-icon.png">
@@ -134,25 +134,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* ── Reset ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    /* ── Tokens ── */
+    /* Current brand: warm off-white, Fraunces Light + DM Sans, muted terracotta, six state colors.
+       Flat surfaces, hairline dividers, sentence-case labels. */
     :root {
       --bg:      #FAF7F2;
       --surface: #F0EBE3;
       --canvas:  #EDE8DF;
       --text-1:  #2A2825;
       --text-2:  #6B6865;
-      --text-3:  #9A9590;
+      --text-3:  #8A8580;
       --border:  #DDD8CF;
       --accent:  #C47B6A;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+      --wrap: 1120px;
+      --gut: clamp(20px, 5vw, 56px);
     }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
+      font-family: var(--sans);
       font-size: 16px;
       line-height: 1.6;
       background: var(--bg);
@@ -161,486 +163,162 @@
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
+    img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gut); }
 
-    /* ── Layout ── */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
+    h1, h2 { font-family: var(--serif); font-weight: 300; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.9rem, 6.4vw, 4.75rem); line-height: 1.02; }
+    h2 { font-size: clamp(2rem, 4.2vw, 3.1rem); line-height: 1.08; }
+    h1 em, h2 em { font-style: italic; }
+    .label { display: block; font-size: 14px; color: var(--text-2); margin-bottom: 14px; }
+    .lede { font-size: 18px; line-height: 1.6; color: var(--text-2); font-weight: 300; }
 
-    /* ── Eyebrow ── */
-    .eyebrow {
-      display: block;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 12px;
-      letter-spacing: 0.84px;
-      text-transform: uppercase;
-      color: var(--text-3);
-      margin-bottom: 14px;
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      font-weight: 500; font-size: 15px; border-radius: 10px; padding: 14px 22px;
+      white-space: nowrap; transition: opacity .15s;
     }
+    .btn:hover { opacity: .86; }
+    .btn-ink { background: var(--text-1); color: var(--bg); }
+    .btn-accent { background: var(--accent); color: var(--bg); }
+    .btn-line { border: 1px solid var(--text-1); }
+    .btn-sm { font-size: 14px; padding: 9px 15px; border-radius: 8px; }
+    .note { font-size: 14px; color: var(--text-2); }
 
-    /* ── Headings ── */
-    h1, h2 {
-      font-family: 'Fraunces', serif;
-      font-weight: 300;
-      color: var(--text-1);
-      letter-spacing: -0.01em;
-    }
-    h1 { font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.18; }
-    h2 { font-size: clamp(1.625rem, 3.5vw, 2.25rem); line-height: 1.22; }
-    h3 {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 0.9375rem;
-      color: var(--text-1);
-    }
-    em { font-style: italic; }
+    /* Nav */
+    .nav { height: 72px; display: flex; align-items: center; gap: 28px; font-size: 14px; border-bottom: 1px solid var(--border); }
+    .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+    /* Logo ring: the app icon's six state segments, turning slowly; a quicker half-turn on hover */
+    .ring { width: 30px; height: 30px; display: block; }
+    .ring-spin { transform-origin: 50px 50px; animation: ring-spin 8s linear infinite; }
+    .ring-hover { transform-origin: 50px 50px; transition: transform .9s cubic-bezier(.3,.7,.2,1); }
+    .brand:hover .ring-hover, .brand:focus-visible .ring-hover { transform: rotate(180deg); }
+    @keyframes ring-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .ring-spin { animation: none; } .ring-hover { transition: none; } }
+    .brand span { font-family: var(--serif); font-weight: 300; font-size: 23px; letter-spacing: -0.01em; }
+    .nav .link { color: var(--text-2); }
+    .nav .link:hover { color: var(--text-1); }
 
-    /* ── Fixed nav ── */
-    .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 40px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-wordmark {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      letter-spacing: 0.9px;
-      color: var(--text-3);
-    }
-    .btn-nav {
-      display: inline-flex;
-      align-items: center;
-      background: var(--accent);
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 14px;
-      padding: 9px 20px;
-      border-radius: 100px;
-      white-space: nowrap;
-      transition: opacity 0.15s;
-    }
-    .btn-nav:hover { opacity: 0.84; }
+    /* Hero */
+    .hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; padding-top: 48px; align-items: center; }
+    .hero-copy { display: flex; flex-direction: column; gap: 24px; }
+    .hero-copy .lede { max-width: 520px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .hero-phone { display: flex; justify-content: center; }
+    .bezel { background: var(--text-1); padding: 9px; border-radius: 50px; width: 100%; max-width: 300px; }
+    .bezel img { border-radius: 42px; width: 100%; }
+    .hero-phone .bezel { max-width: 272px; padding: 8px; border-radius: 46px; }
+    .hero-phone .bezel img { border-radius: 39px; }
 
-    /* ── Sections ── */
-    .section { padding: 100px 0; }
-    .section-header { margin-bottom: 48px; }
+    /* Try it: the six states, clickable */
+    .try { margin-top: 40px; border-top: 1px solid var(--border); padding: 20px 0 88px; }
+    .try-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .try-head h2 { font-size: 26px; letter-spacing: -0.01em; }
+    .try-status { font-size: 14px; color: var(--text-2); min-height: 1.6em; }
+    .try-status em { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 16px; }
+    .states { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+    .state {
+      background: var(--c-bg); color: var(--c-fg);
+      border: 1px solid rgba(0,0,0,.06); border-radius: 12px; padding: 16px 14px; min-height: 104px;
+      display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 10px;
+      text-align: left; cursor: pointer; transition: opacity .2s, transform .15s, box-shadow .15s;
+    }
+    .state:hover { transform: translateY(-2px); }
+    .state:active { transform: scale(.98); }
+    .state b { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 21px; line-height: 1.1; }
+    .state span { font-size: 12.5px; opacity: .85; }
+    .states.picked .state { opacity: .5; }
+    .states.picked .state[aria-pressed="true"] { opacity: 1; box-shadow: 0 0 0 1.5px var(--accent); }
+    .s-alive    { --c-bg: #D8ECC8; --c-fg: #2A4A10; }
+    .s-ease     { --c-bg: #F0E6A0; --c-fg: #6B5A10; }
+    .s-fumes    { --c-bg: #EDD0A0; --c-fg: #7A3A10; }
+    .s-numb     { --c-bg: #D8D8D8; --c-fg: #3A3A3A; }
+    .s-anxious  { --c-bg: #C4CDE8; --c-fg: #2A3A6B; }
+    .s-wound    { --c-bg: #E8ACAC; --c-fg: #6B1818; }
 
-    /* ── Hero ── */
-    #hero {
-      padding: 132px 0 100px;
+    /* Widget section */
+    .widget-sec { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 88px 0; text-align: center; }
+    .widget-sec h2 { max-width: 860px; margin: 0 auto; }
+    .widget-sec .lede { max-width: 600px; margin: 18px auto 0; }
+    .widget {
+      margin: 44px auto 0; max-width: 720px; padding: 28px; border-radius: 30px;
+      background: var(--bg); border: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; text-align: left;
     }
-    #hero .container {
-      display: flex;
-      align-items: center;
-      gap: 64px;
-    }
-    .hero-text { flex: 1; max-width: 480px; }
-    #hero h1 { margin-bottom: 20px; }
-    .hero-sub {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 17px;
-      color: var(--text-2);
-      line-height: 1.6;
-      margin-bottom: 32px;
-      max-width: 380px;
-    }
-    .hero-cta-wrap {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .btn-appstore {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: var(--text-1);
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 15px;
-      padding: 13px 24px;
-      border-radius: 14px;
-      white-space: nowrap;
-      transition: opacity 0.15s;
-    }
-    .btn-appstore:hover { opacity: 0.84; }
-    .hero-note {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 13px;
-      color: var(--text-3);
-    }
+    .widget-q { display: flex; flex-direction: column; gap: 8px; }
+    .widget-q small { font-size: 12px; color: var(--text-2); }
+    .widget-q b { font-family: var(--serif); font-weight: 300; font-size: 30px; line-height: 1.1; }
+    .widget-q b em { font-style: italic; }
+    .widget-q span { font-size: 13px; color: var(--text-2); }
+    .widget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .widget-grid span { background: var(--c-bg); color: var(--c-fg); border-radius: 10px; padding: 10px 12px; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 15px; }
+    .points { margin-top: 56px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; border-top: 1px solid var(--border); padding-top: 20px; text-align: left; }
+    .points div { display: flex; flex-direction: column; gap: 4px; }
+    .points b { font-weight: 500; font-size: 15px; }
+    .points span { font-size: 14px; color: var(--text-2); }
 
-    /* ── Hero phone mockup ── */
-    .phone-mockup {
-      flex-shrink: 0;
-    }
-    .phone-shell {
-      width: 240px;
-      border: 7px solid #2A2825;
-      border-radius: 44px;
-      overflow: hidden;
-      background: #2A2825;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.05),
-        0 28px 64px rgba(42, 40, 37, 0.16),
-        0 4px 16px rgba(42, 40, 37, 0.08);
-    }
-    .phone-shell img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    /* Screens */
+    section.block { padding: 88px 0; }
+    .sec-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 48px; align-items: end; margin-bottom: 44px; }
+    .insight-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center; }
+    .insight-copy { display: flex; flex-direction: column; gap: 20px; }
+    .screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 3vw, 32px); }
+    .screens figure { display: flex; flex-direction: column; gap: 14px; }
+    .screens .bezel { max-width: none; padding: 7px; border-radius: 42px; }
+    .screens .bezel img { border-radius: 35px; }
+    .screens figcaption { display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--text-2); }
+    .screens figcaption b { font-weight: 500; font-size: 15px; color: var(--text-1); }
 
-    /* ── How it works ── */
-    #how-it-works { background: var(--surface); }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .feature-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-    }
-    .feature-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: var(--canvas);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-    .feature-card h3 { margin-bottom: 8px; }
-    .feature-card p {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.65;
-    }
+    /* Pricing */
+    .pricing { border-top: 1px solid var(--border); }
+    .price-head { max-width: 640px; margin-bottom: 40px; display: flex; flex-direction: column; gap: 14px; }
+    .price-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+    .plan { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 4px; }
+    .plan .tag { align-self: flex-start; font-size: 12px; font-weight: 500; color: #8E4A3B; background: #F3E1DB; border-radius: 6px; padding: 3px 8px; margin-bottom: 14px; }
+    .plan .tag-plain { color: var(--text-2); background: var(--surface); }
+    .plan .price { font-family: var(--serif); font-weight: 300; font-size: 52px; line-height: 1; letter-spacing: -0.02em; }
+    .plan .per { font-size: 15px; color: var(--text-2); }
+    .plan .sub { font-size: 14px; color: var(--text-2); margin-top: auto; padding-top: 18px; border-top: 1px solid var(--border); }
+    .plan .per + .sub { margin-top: auto; }
+    /* What's included: plain text beside the plans, not another card */
+    .plan-list { padding: 4px 0 0 24px; border-left: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; }
+    .list-label { font-size: 14px; color: var(--text-2); }
+    .includes { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .includes li { font-size: 15px; color: var(--text-2); padding-left: 22px; position: relative; line-height: 1.45; }
+    .includes li::before { content: ''; position: absolute; left: 2px; top: .32em; width: 9px; height: 5px; border-left: 1.5px solid var(--accent); border-bottom: 1.5px solid var(--accent); transform: rotate(-45deg); }
+    .pricing-cta { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 
-    /* ── States ── */
-    .states-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .state-card {
-      border-radius: 16px;
-      padding: 24px 20px;
-      min-height: 110px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .state-name {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 1.3;
-    }
-    .state-hint {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 12px;
-      opacity: 0.65;
-    }
+    /* Footer */
+    footer { border-top: 1px solid var(--border); background: var(--surface); }
+    .foot { padding-top: 40px; padding-bottom: 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+    .foot .brand { margin-right: 0; }
+    .foot-tag { font-size: 15px; color: var(--text-2); margin-right: auto; }
+    .foot nav { display: flex; flex-wrap: wrap; gap: 22px; font-size: 14px; color: var(--text-2); }
+    .foot nav a:hover { color: var(--text-1); }
 
-    /* ── Screenshots ── */
-    #screenshots { background: var(--surface); }
-    .screenshot-row {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+    @media (max-width: 900px) {
+      .hero, .sec-head, .insight-grid { grid-template-columns: 1fr; }
+      .price-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .plan-list { grid-column: 1 / -1; border-left: 0; padding-left: 0; padding-top: 8px; }
+      .hero { gap: 32px; }
+      .states { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .widget { grid-template-columns: 1fr; }
+      .screens { gap: 14px; }
+      .screens .bezel { padding: 5px; border-radius: 30px; }
+      .screens .bezel img { border-radius: 25px; }
     }
-    .screenshot-item { flex: 1; }
-    .screenshot-frame {
-      width: 100%;
-      border: 7px solid #2A2825;
-      border-radius: 38px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      background: #2A2825;
-      position: relative;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.04),
-        0 20px 48px rgba(42, 40, 37, 0.18),
-        0 4px 12px rgba(42, 40, 37, 0.08);
-    }
-    .screenshot-frame::after {
-      content: '';
-      position: absolute;
-      right: -9px;
-      top: 20%;
-      width: 3px;
-      height: 8%;
-      background: #2A2825;
-      border-radius: 0 3px 3px 0;
-    }
-    .screenshot-frame img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .screenshot-label {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 13px;
-      color: var(--text-3);
-      text-align: center;
-    }
-
-    /* ── Insight preview ── */
-    #insight { background: var(--canvas); }
-    .insight-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-    }
-    .insight-left h2 { margin-bottom: 16px; }
-    .insight-left p {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.65;
-    }
-    .insight-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-    }
-    .insight-label {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 11px;
-      letter-spacing: 0.7px;
-      text-transform: uppercase;
-      color: var(--text-3);
-      margin-bottom: 14px;
-    }
-    .insight-text {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.65;
-      margin-bottom: 24px;
-    }
-    .insight-text em {
-      font-family: 'Fraunces', serif;
-      font-weight: 300;
-    }
-    .mini-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 8px;
-    }
-    .mini-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-    }
-    .mini-bar {
-      width: 20px;
-      border-radius: 3px 3px 0 0;
-    }
-    .mini-day {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 10px;
-      color: var(--text-3);
-    }
-
-    /* ── Pricing ── */
-    #pricing { text-align: center; }
-    .pricing-single {
-      max-width: 420px;
-      margin: 0 auto;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px 36px;
-      text-align: left;
-    }
-    .plan-badge {
-      display: inline-block;
-      background: var(--surface);
-      color: var(--accent);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-    }
-    .plan-price {
-      font-family: 'Fraunces', serif;
-      font-weight: 300;
-      font-size: clamp(2.25rem, 5vw, 3.25rem);
-      color: var(--text-1);
-      letter-spacing: -0.03em;
-      line-height: 1;
-      display: block;
-    }
-    .plan-period {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.9375rem;
-      color: var(--text-3);
-      display: block;
-      margin: 4px 0 6px;
-    }
-    .plan-sub {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.875rem;
-      color: var(--text-3);
-      display: block;
-      margin-bottom: 28px;
-    }
-    .btn-cta-full {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      width: 100%;
-      background: var(--accent);
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 15px;
-      padding: 16px 24px;
-      border-radius: 14px;
-      transition: opacity 0.15s;
-    }
-    .btn-cta-full:hover { opacity: 0.84; }
-    .feature-list {
-      list-style: none;
-      border-top: 1px solid var(--border);
-      padding-top: 24px;
-      margin-top: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .feature-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.9375rem;
-      color: var(--text-2);
-    }
-    .feature-list li svg { flex-shrink: 0; }
-
-    /* ── Footer ── */
-    footer { border-top: 1px solid var(--border); }
-    .footer-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 40px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 24px;
-    }
-    .footer-wordmark {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      letter-spacing: 0.9px;
-      color: var(--text-3);
-    }
-    .footer-tagline {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 15px;
-      color: var(--text-2);
-      text-align: center;
-    }
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      justify-content: flex-end;
-    }
-    .footer-links a {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: 13px;
-      color: var(--text-3);
-      transition: color 0.15s;
-    }
-    .footer-links a:hover { color: var(--text-1); }
-    .footer-links .footer-tf { margin-left: auto; }
-
-    /* ── Apple icon shared ── */
-    .apple-icon { flex-shrink: 0; }
-
-    /* ── Responsive ── */
     @media (max-width: 600px) {
-      .nav-inner   { padding: 0 24px; }
-      .container   { padding: 0 24px; }
-      .section     { padding: 72px 0; }
-      #hero        { padding: 104px 0 72px; }
-
-      .feature-grid  { grid-template-columns: 1fr; }
-      .states-grid   { grid-template-columns: 1fr 1fr; }
-      .screenshot-row { gap: 8px; }
-      .screenshot-item { min-width: 0; }
-      .screenshot-frame { border-width: 4px; border-radius: 20px; }
-      .insight-grid  { grid-template-columns: 1fr; gap: 32px; }
-      .pricing-single { padding: 32px 24px; }
-
-      #hero .container { flex-direction: column; gap: 40px; }
-      .hero-text { max-width: 100%; }
-      .phone-shell { width: 200px; }
-
-      .footer-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 36px 24px;
-        gap: 16px;
-      }
-      .footer-links { justify-content: center; }
-      .footer-tagline { order: -1; }
-
+      .nav .link { display: none; }
+      .states { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .points, .price-row { grid-template-columns: 1fr; }
+      .screens { gap: 12px; }
+      .screens .bezel { padding: 4px; border-radius: 24px; }
+      .screens .bezel img { border-radius: 20px; }
+      .widget-sec, section.block { padding: 64px 0; }
     }
-      /* Scale up on very wide viewports (zoomed-out browser, 4K/ultrawide) */
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
     @media (min-width: 1800px) { html { zoom: 1.25; } }
     @media (min-width: 2600px) { html { zoom: 1.6; } }
     @media (min-width: 3600px) { html { zoom: 2; } }
@@ -648,289 +326,167 @@
 </head>
 <body>
 
-  <!-- ══════════ Nav ══════════ -->
-  <nav class="nav" aria-label="Site navigation">
-    <div class="nav-inner">
-      <a class="nav-wordmark" href="/current/">Current</a>
-      <a class="btn-nav" href="https://apps.apple.com/us/app/current-nervous-system-log/id6777603277" aria-label="Download Current on the App Store">Download</a>
-    </div>
-  </nav>
+  <header class="wrap">
+    <nav class="nav" aria-label="Site navigation">
+      <a class="brand" href="/current/" aria-label="Current home"><svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><g class="ring-spin"><g class="ring-hover"><circle cx="50" cy="50" r="28.5" fill="none" stroke="#EDD0A0" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#F0E6A0" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(-30 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#D8ECC8" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(30 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#D8D8D8" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(90 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#E8ACAC" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(150 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#C4CDE8" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(210 50 50)"/></g></g></svg><span>current</span></a>
+      <a class="link" href="#how-it-works">how it works</a>
+      <a class="link" href="#pricing">pricing</a>
+      <a class="btn btn-ink btn-sm" href="https://apps.apple.com/us/app/current-nervous-system-log/id6777603277" aria-label="Download Current on the App Store">download</a>
+    </nav>
+  </header>
 
   <main>
 
-    <!-- ══════════ Hero ══════════ -->
-    <section id="hero">
-      <div class="container">
-
-        <div class="hero-text">
-          <span class="eyebrow">nervous system check-in</span>
-          <h1>Notice how you <em>actually</em> feel.</h1>
-          <p class="hero-sub">
-            A quick check-in, once or twice a day.<br>
-            No streaks. No guilt if you miss a day.
-          </p>
-          <div class="hero-cta-wrap">
-            <a class="btn-appstore" href="https://apps.apple.com/us/app/current-nervous-system-log/id6777603277" aria-label="Download Current free on the App Store">
-              <svg width="14" height="17" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-3.158.728-3.43zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282z"/></svg>
-              Free download
+    <section id="hero" class="wrap">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="label" style="margin:0">a nervous system check-in for iPhone and iPad</span>
+          <h1>notice how you <em>actually</em> feel.</h1>
+          <p class="lede">Tap one word from your home screen widget, once or twice a day. Over a week, the pattern shows up. No streaks, no scores, no guilt if you miss a day.</p>
+          <div class="hero-cta">
+            <a class="btn btn-ink" href="https://apps.apple.com/us/app/current-nervous-system-log/id6777603277" aria-label="Download Current on the App Store">
+              <svg width="14" height="17" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.7C46.8 755.5 0 644.5 0 539.1c0-194.4 127-297.5 252.2-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg>
+              Download on the App Store
             </a>
-            <span class="hero-note">Free to try · iOS only</span>
+            <span class="note">7 days free, then $39.99 a year</span>
           </div>
         </div>
+        <div class="hero-phone">
+          <div class="bezel"><img src="/img/current/iphone-17-pro_today.png" alt="Current today screen: good evening, how are you right now, with the six states and today's check-ins" fetchpriority="high"></div>
+        </div>
+      </div>
 
-        <!-- Phone mockup -->
-        <div class="phone-mockup" aria-hidden="true">
-          <div class="phone-shell">
-            <img src="/img/current/current-share-card.png" alt="Current app showing six somatic check-in states: anxious, alive, numb, at ease, running on fumes, wound up" />
-          </div>
+      <div class="try" id="states">
+        <div class="try-head">
+          <h2>try it. <em>how are you right now?</em></h2>
+          <p class="try-status" id="try-status" aria-live="polite">tap one. it takes a second.</p>
+        </div>
+        <div class="states" id="try-states" role="group" aria-label="The six states">
+          <button type="button" class="state s-alive" aria-pressed="false"><b>alive</b><span>vibrant, full of energy</span></button>
+          <button type="button" class="state s-ease" aria-pressed="false"><b>at ease</b><span>steady, present</span></button>
+          <button type="button" class="state s-fumes" aria-pressed="false"><b>running on fumes</b><span>tired but still going</span></button>
+          <button type="button" class="state s-numb" aria-pressed="false"><b>numb</b><span>going through the motions</span></button>
+          <button type="button" class="state s-anxious" aria-pressed="false"><b>anxious</b><span>on edge but functioning</span></button>
+          <button type="button" class="state s-wound" aria-pressed="false"><b>wound up</b><span>tense, can't shake it</span></button>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ How it works ══════════ -->
-    <section id="how-it-works" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">how it works</span>
-          <h2>The whole thing takes ten seconds.</h2>
+    <section id="how-it-works" class="widget-sec">
+      <div class="wrap">
+        <h2>one tap on your home screen. <em>that's the whole check-in.</em></h2>
+        <p class="lede">Current lives in a widget. Tap the word that fits right now, and the app stays closed. Once or twice a day is plenty.</p>
+
+        <div class="widget" aria-label="Example of the Current home screen widget">
+          <div class="widget-q">
+            <small>current · 2:14 pm</small>
+            <b>how are you <em>right now?</em></b>
+            <span>last: running on fumes, 9:41 am</span>
+          </div>
+          <div class="widget-grid" aria-hidden="true">
+            <span class="s-alive">alive</span>
+            <span class="s-ease">at ease</span>
+            <span class="s-fumes">running on fumes</span>
+            <span class="s-numb">numb</span>
+            <span class="s-anxious">anxious</span>
+            <span class="s-wound">wound up</span>
+          </div>
         </div>
 
-        <div class="feature-grid">
-
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="4"/>
-                <path d="M3 9h18"/>
-                <path d="M9 3v6"/>
-              </svg>
-            </div>
-            <h3>Widget check-in</h3>
-            <p>Tap a state from your home screen widget. The app stays closed. The whole thing takes about five seconds.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/>
-                <circle cx="12" cy="12" r="1" fill="currentColor"/>
-              </svg>
-            </div>
-            <h3>Somatic states</h3>
-            <p>The words were picked carefully. Each one names something you recognize the moment you see it. More precise than "tired". More honest than "fine".</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-              </svg>
-            </div>
-            <h3>Pattern insights</h3>
-            <p>Give it a few days. Current starts to surface things: your afternoons, your Sundays, the stretch before a deadline.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-              </svg>
-            </div>
-            <h3>Gentle reminders</h3>
-            <p>Optional nudges at whatever time you pick. Ignore one and it goes quiet.</p>
-          </div>
-
+        <div class="points">
+          <div><b>Six words</b><span>Named for how your body feels, not a mood score.</span></div>
+          <div><b>No streaks or scores</b><span>Miss a day and nothing breaks.</span></div>
+          <div><b>Gentle reminders</b><span>Optional, at times you pick. Ignore one and it goes quiet.</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ States ══════════ -->
-    <section id="states" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">six states</span>
-          <h2>Six words for six different days.</h2>
-        </div>
-
-        <div class="states-grid">
-
-          <div class="state-card" style="background:#D8ECC8;">
-            <span class="state-name" style="color:#2A4A10;">alive</span>
-            <span class="state-hint" style="color:#2A4A10;">vibrant, full of energy</span>
-          </div>
-
-          <div class="state-card" style="background:#F0E6A0;">
-            <span class="state-name" style="color:#6B5A10;">at ease</span>
-            <span class="state-hint" style="color:#6B5A10;">steady, present</span>
-          </div>
-
-          <div class="state-card" style="background:#EDD0A0;">
-            <span class="state-name" style="color:#7A3A10;">running on fumes</span>
-            <span class="state-hint" style="color:#7A3A10;">tired but still going</span>
-          </div>
-
-          <div class="state-card" style="background:#D8D8D8;">
-            <span class="state-name" style="color:#3A3A3A;">numb</span>
-            <span class="state-hint" style="color:#3A3A3A;">low energy, going through motions</span>
-          </div>
-
-          <div class="state-card" style="background:#C4CDE8;">
-            <span class="state-name" style="color:#2A3A6B;">anxious</span>
-            <span class="state-hint" style="color:#2A3A6B;">on edge but functioning</span>
-          </div>
-
-          <div class="state-card" style="background:#E8ACAC;">
-            <span class="state-name" style="color:#6B1818;">wound up</span>
-            <span class="state-hint" style="color:#6B1818;">tense, can't shake it</span>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ Screenshots ══════════ -->
-    <section id="screenshots" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">the app</span>
-          <h2>Built for how you actually live.</h2>
-        </div>
-        <div class="screenshot-row">
-
-          <div class="screenshot-item">
-            <div class="screenshot-frame">
-              <img src="/img/current/iphone-17-pro_today.png" alt="Current app today screen showing six somatic check-in states and today's entries" />
-            </div>
-            <p class="screenshot-label">Today</p>
-          </div>
-
-          <div class="screenshot-item">
-            <div class="screenshot-frame">
-              <img src="/img/current/iphone-17-pro_history.png" alt="Current app history screen showing past 7 days as colour blocks and a log of recent check-ins" />
-            </div>
-            <p class="screenshot-label">History</p>
-          </div>
-
-          <div class="screenshot-item">
-            <div class="screenshot-frame">
-              <img src="/img/current/iphone-17-pro_insights.png" alt="Current app insights screen showing most common state, time-of-day patterns, and day-of-week patterns" />
-            </div>
-            <p class="screenshot-label">Insights</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ Insight preview ══════════ -->
-    <section id="insight" class="section">
-      <div class="container">
+    <section id="insight" class="block">
+      <div class="wrap">
         <div class="insight-grid">
-
-          <div class="insight-left">
-            <span class="eyebrow">pattern insights</span>
-            <h2>You see the pattern. You decide what it means.</h2>
-            <p>There's no score. No recommendation. Just: here's what the last week looked like.</p>
-          </div>
-
-          <div class="insight-right">
-            <div class="insight-card">
-              <p class="insight-label">weekly insight</p>
-              <p class="insight-text">
-                you've been logging <em>running on fumes</em> most weekday afternoons.
-              </p>
-              <div class="mini-chart" aria-hidden="true">
-                <div class="mini-col">
-                  <div class="mini-bar" style="height:18px; background:#E8C4A0; opacity:0.35;"></div>
-                  <span class="mini-day">M</span>
-                </div>
-                <div class="mini-col">
-                  <div class="mini-bar" style="height:24px; background:#E8C4A0; opacity:0.50;"></div>
-                  <span class="mini-day">T</span>
-                </div>
-                <div class="mini-col">
-                  <div class="mini-bar" style="height:30px; background:#E8C4A0; opacity:0.65;"></div>
-                  <span class="mini-day">W</span>
-                </div>
-                <div class="mini-col">
-                  <div class="mini-bar" style="height:36px; background:#E8C4A0; opacity:0.80;"></div>
-                  <span class="mini-day">T</span>
-                </div>
-                <div class="mini-col">
-                  <div class="mini-bar" style="height:44px; background:#E8C4A0; opacity:1.0;"></div>
-                  <span class="mini-day">F</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div class="insight-copy">
+          <h2>you see the pattern. <em>you decide what it means.</em></h2>
+          <p class="lede">History shows every check-in by day, colored by state. Insights point out what repeats, like your afternoons or your Sundays. No score, no advice.</p>
+        </div>
+        <div class="screens">
+          <figure>
+            <div class="bezel"><img src="/img/current/iphone-17-pro_history.png" alt="Current history screen with the past seven days as colored bars and a list of check-ins" loading="lazy"></div>
+            <figcaption><b>History</b><span>Every check-in, by day.</span></figcaption>
+          </figure>
+          <figure>
+            <div class="bezel"><img src="/img/current/iphone-17-pro_insights.png" alt="Current insights screen noting the most common state and time-of-day patterns" loading="lazy"></div>
+            <figcaption><b>Insights</b><span>What repeats, in plain words.</span></figcaption>
+          </figure>
+        </div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ Pricing ══════════ -->
-    <section id="pricing" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">pricing</span>
-          <h2>Simple. Quiet. Yours.</h2>
+    <section id="pricing" class="block pricing">
+      <div class="wrap">
+        <div class="price-head">
+          <h2>simple. quiet. <em>yours.</em></h2>
+          <p class="lede">Free to download. A subscription unlocks your full history and insights.</p>
         </div>
-        <div class="pricing-single">
-          <span class="plan-badge">best value</span>
-          <span class="plan-price">$39.99</span>
-          <span class="plan-period">per year</span>
-          <span class="plan-sub">7-day free trial · or $6.99 a month · cancel anytime.</span>
-          <a class="btn-cta-full" href="https://apps.apple.com/us/app/current-nervous-system-log/id6777603277" aria-label="Download Current on the App Store">
-            <svg width="14" height="17" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-3.158.728-3.43zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282z"/></svg>
-            Download on the App Store
-          </a>
-          <ul class="feature-list">
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              7-day free trial included
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              unlimited check-ins
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              home screen widget
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              full check-in history
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              weekly pattern insights
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              custom reminder times
-            </li>
-          </ul>
+        <div class="price-row">
+          <div class="plan">
+            <span class="tag">Best value</span>
+            <span class="price">$39.99</span>
+            <span class="per">per year</span>
+            <span class="sub">7 days free, then about $3.33 a month</span>
+          </div>
+          <div class="plan">
+            <span class="tag tag-plain">Monthly</span>
+            <span class="price">$6.99</span>
+            <span class="per">per month</span>
+            <span class="sub">Cancel anytime</span>
+          </div>
+          <div class="plan-list">
+            <span class="list-label">Both plans include</span>
+            <ul class="includes">
+              <li>Unlimited check-ins</li>
+              <li>Home screen widget</li>
+              <li>Full check-in history</li>
+              <li>Weekly pattern insights</li>
+              <li>Custom reminder times</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pricing-cta">
+          <a class="btn btn-accent" href="https://apps.apple.com/us/app/current-nervous-system-log/id6777603277" aria-label="Download Current on the App Store">Download on the App Store</a>
+          <span class="note">Choose a plan in the app after you download.</span>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ══════════ Footer ══════════ -->
   <footer>
-    <div class="footer-inner">
-      <a class="footer-wordmark" href="/current/">Current</a>
-      <p class="footer-tagline">Your nervous system is always talking.</p>
-      <nav class="footer-links" aria-label="Footer links">
+    <div class="wrap foot">
+      <a class="brand" href="/current/" aria-label="Current home"><svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><g class="ring-spin"><g class="ring-hover"><circle cx="50" cy="50" r="28.5" fill="none" stroke="#EDD0A0" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#F0E6A0" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(-30 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#D8ECC8" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(30 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#D8D8D8" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(90 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#E8ACAC" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(150 50 50)"/><circle cx="50" cy="50" r="28.5" fill="none" stroke="#C4CDE8" stroke-width="15.6" stroke-dasharray="29.845 179.071" transform="rotate(210 50 50)"/></g></g></svg><span>current</span></a>
+      <span class="foot-tag">Your nervous system is always talking.</span>
+      <nav aria-label="Footer links">
         <a href="/current/privacy/">Privacy</a>
         <a href="/current/terms/">Terms</a>
-        <a href="mailto:hello@transcendfrontiers.com">Contact</a>
-        <a href="/" class="footer-tf">transcendfrontiers.com</a>
+        <a href="mailto:hello@transcendfrontiers.com">hello@transcendfrontiers.com</a>
+        <a href="/">Transcend Frontiers</a>
       </nav>
     </div>
   </footer>
 
+  <script>
+    // Try it: tap a state and it's "logged", like the widget.
+    (() => {
+      const group = document.getElementById('try-states');
+      const status = document.getElementById('try-status');
+      group.querySelectorAll('.state').forEach(btn => btn.addEventListener('click', () => {
+        group.classList.add('picked');
+        group.querySelectorAll('.state').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+        const name = btn.querySelector('b').textContent;
+        const t = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }).toLowerCase();
+        status.innerHTML = `logged. <em>${name}</em>, ${t}. that's the whole check-in.`;
+      }));
+    })();
+  </script>
 </body>
 </html>
