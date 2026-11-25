@@ -638,10 +638,11 @@
     }
     .app p { font-size: 15px; margin: 0 10px; opacity: .8; }
 
-    .app-halo    { background: #e2dcf6; color: #2d2060; }
+    .app-halo    { background: #ebe4fc; color: #2a1f4d; }
     .app-current { background: #efdcc6; color: #4a2a18; }
-    .app-count   { background: #0e4a30; color: #e9f1ec; }
-    .app-count .app-shot { background: rgba(255,255,255,.1); }
+    .app-count   { background: #f2f2f2; color: #000; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1), 0 1px 0 rgba(0,0,0,.04), 0 24px 40px -24px rgba(30,24,21,.35); }
+    .app-count .app-shot { background: #fff; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); }
+    .app-count .app-shot img { border: 5px solid #1d1d1d; border-radius: 27px; }
     .app-fabric  { background: #24221f; color: var(--on-dark); }
     .app-fabric .app-shot { background: #f8f2f1; align-items: center; padding: 0 22px; }
     .app-fabric .app-shot img { width: 100%; border-radius: 8px; }
@@ -831,7 +832,7 @@
           </a>
         </div>
         <div class="hero-phones" aria-hidden="true">
-          <img src="img/halo/iphone-17-pro_home.png" alt="" loading="eager">
+          <img src="img/count/iphone-17-pro_setup.png" alt="" loading="eager">
           <img src="img/current/iphone-17-pro_today.png" alt="" loading="eager">
         </div>
       </div>
@@ -1011,7 +1012,7 @@
             <p>Somatic check-ins · iOS</p>
           </a>
           <a class="app app-count" href="/count/">
-            <div class="app-shot"><img src="img/count/iphone-17-pro_setup.png" alt="Count setup screen with Hi-Lo sample cards, deck count and pace" loading="lazy"></div>
+            <div class="app-shot"><img src="img/count/iphone-17-pro_setup.png" alt="Count setup screen with Hi-Lo tags, a six-deck shoe and a pace ruler" loading="lazy"></div>
             <h3>Count</h3>
             <p>Card counting drills · iOS</p>
           </a>
@@ -1036,7 +1037,7 @@
             <nav aria-label="Current links"><a href="/current/terms/">Terms</a><a href="/current/privacy/">Privacy</a></nav>
           </div>
           <div class="app-row">
-            <img src="img/count-icon.png" alt="Count app icon">
+            <img src="img/count-icon.png?v=2" alt="Count app icon">
             <div><h3><a href="/count/">Count</a></h3><span class="plat">iOS</span></div>
             <p>Practice card counting for blackjack. Cards are dealt on a timer while you keep the running count, then you guess and see if you were right.</p>
             <nav aria-label="Count links"><a href="/count/terms/">Terms</a><a href="/count/privacy/">Privacy</a></nav>

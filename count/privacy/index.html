@@ -15,67 +15,103 @@
   <link rel="canonical" href="https://transcendfrontiers.com/count/privacy/" />
   <meta name="description" content="Count privacy policy. No accounts, no analytics, and your drill history stays on your iPhone." />
 
-  <link rel="icon" type="image/png" href="/img/count-icon.png">
+  <script>
+    // Appearance: system / light / dark, saved like the app's setting. Runs before paint to avoid a flash.
+    (() => {
+      const KEY = 'count-appearance', mq = matchMedia('(prefers-color-scheme: dark)');
+      const pref = () => localStorage.getItem(KEY) || 'system';
+      const apply = () => {
+        const p = pref(), dark = p === 'dark' || (p === 'system' && mq.matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = dark ? '#000000' : '#f2f2f2';
+        document.querySelectorAll('.appearance button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === p)));
+      };
+      mq.addEventListener('change', apply);
+      window.countAppearance = mode => { localStorage.setItem(KEY, mode); apply(); };
+      apply();
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.appearance button').forEach(b => b.addEventListener('click', () => countAppearance(b.dataset.mode)));
+        apply();
+      });
+    })();
+  </script>
+  <link rel="icon" type="image/png" href="/img/count-icon.png?v=2">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* Count 1.1 "shoe ledger" brand. Matches /count/. */
     :root {
       --canvas:   #f2f2f2;
-      --ink:      #0b0b0b;
-      --ink-2:    #5e5e5e;
-      --ink-3:    #8e8e8e;
+      --ink:      #000000;
+      --ink-2:    #555555;
       --hairline: rgba(0, 0, 0, .1);
-      --felt:     #0e4a30;
-      --font: ui-rounded, 'SF Pro Rounded', 'Nunito', system-ui, sans-serif;
+      --on-ink:   #ffffff;
+      --text:     #333333;
+      --font: 'Schibsted Grotesk', system-ui, sans-serif;
     }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --canvas: #000000; --ink: #ffffff; --on-ink: #000000; --ink-2: #a8a8a8; --text: #cfcfcf; --hairline: rgba(255, 255, 255, .12);
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: var(--canvas);
       color: var(--ink);
       font-family: var(--font);
-      font-weight: 500;
+      font-weight: 400;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
     a { color: inherit; text-decoration: none; }
 
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 4.5vw, 48px); }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+    .rule-strong { height: 2px; background: var(--ink); }
 
-    .nav .wrap { height: 64px; display: flex; align-items: center; }
-    .brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
-    .brand img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav { height: 72px; display: flex; align-items: center; gap: 24px; font-size: 15px; font-weight: 500; }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin-right: auto; }
+    .brand img { width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--hairline); }
+    .nav .link { color: var(--ink-2); }
+    .nav .link:hover { color: var(--ink); }
+    .nav .link { white-space: nowrap; }
+    @media (max-width: 440px) { .nav .link { display: none; } .nav { gap: 12px; } }
 
-    .content { max-width: 680px; margin: 0 auto; padding: 64px clamp(16px, 4.5vw, 48px) 96px; }
-    .label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; }
-    h1 { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 28px; }
+    /* Appearance control: one ink-outlined cell group, selected cell solid ink */
+    .appearance { display: inline-grid; grid-template-columns: repeat(3, 32px); height: 32px; border: 1px solid var(--ink); border-radius: 6px; overflow: hidden; }
+    .appearance button { background: none; border: 0; border-left: 1px solid var(--ink); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+    .appearance button:first-child { border-left: 0; }
+    .appearance button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
+
+    .content { max-width: 720px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px) 96px; }
+    .label { display: block; font-size: 15px; font-weight: 500; color: var(--ink-2); margin-bottom: 12px; }
+    h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1; margin-bottom: 28px; }
     .intro {
       font-size: 18px;
       line-height: 1.6;
-      color: var(--ink-2);
-      padding-bottom: 36px;
+      color: var(--text);
+      padding-bottom: 32px;
       margin-bottom: 8px;
-      border-bottom: 1px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
     }
-    h2 { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; margin: 36px 0 10px; }
-    p, li { font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+    h2 { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin: 36px 0 10px; }
+    p, li { font-size: 16px; line-height: 1.7; color: var(--text); }
     p { margin-bottom: 14px; }
     ul { list-style: none; margin-bottom: 14px; }
-    li { position: relative; padding: 10px 0 10px 0; border-top: 1px solid var(--hairline); }
+    li { position: relative; padding: 10px 0; border-top: 1px solid var(--hairline); }
     li:last-child { border-bottom: 1px solid var(--hairline); }
-    li strong { font-weight: 800; color: var(--ink); }
-    a.link { color: var(--felt); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-    .updated { font-size: 13px; color: var(--ink-3); margin-top: 48px; }
+    li strong { font-weight: 600; color: var(--ink); }
+    a.link { color: var(--ink); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+    .updated { font-size: 14px; color: var(--ink-2); margin-top: 48px; }
 
-    footer { border-top: 1px solid var(--hairline); }
-    .foot { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; padding-top: 32px; padding-bottom: 32px; font-size: 14px; color: var(--ink-2); }
-    .foot-tag { color: var(--ink-3); }
+    footer.wrap { padding-top: 24px; padding-bottom: 120px; }
+    .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; padding-top: 24px; font-size: 15px; color: var(--ink-2); }
+    .foot .brand { margin-right: 0; color: var(--ink); }
+    .foot-tag { margin-right: auto; }
     .foot nav { display: flex; gap: 22px; flex-wrap: wrap; }
     .foot nav a:hover { color: var(--ink); }
-    @media (max-width: 720px) { .foot { grid-template-columns: 1fr; gap: 12px; } }
-      /* Scale up on very wide viewports (zoomed-out browser, 4K/ultrawide) */
     @media (min-width: 1800px) { html { zoom: 1.25; } }
     @media (min-width: 2600px) { html { zoom: 1.6; } }
     @media (min-width: 3600px) { html { zoom: 2; } }
@@ -83,8 +119,17 @@
 </head>
 <body>
 
-  <header class="nav">
-    <div class="wrap"><a class="brand" href="/count/"><img src="/img/count-icon.png" alt="">Count</a></div>
+  <header class="wrap">
+    <nav class="nav" aria-label="Site navigation">
+      <a class="brand" href="/count/"><img src="/img/count-icon.png?v=2" alt="">Count</a>
+      <a class="link" href="/count/">Back to Count</a>
+      <div class="appearance" role="group" aria-label="Appearance">
+        <button type="button" data-mode="system" aria-label="Match system appearance" title="System"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 1.4a5.6 5.6 0 0 1 0 11.2z" fill="currentColor"/></svg></button>
+        <button type="button" data-mode="light" aria-label="Light appearance" title="Light"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="2.6"/><path d="M7 .9v1.5M7 11.6v1.5M.9 7h1.5M11.6 7h1.5M2.7 2.7l1 1M10.3 10.3l1 1M2.7 11.3l1-1M10.3 3.7l1-1"/></svg></button>
+        <button type="button" data-mode="dark" aria-label="Dark appearance" title="Dark"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M11.8 8.6A5.3 5.3 0 0 1 5.4 2.2a5.3 5.3 0 1 0 6.4 6.4z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></button>
+      </div>
+    </nav>
+    <div class="rule-strong"></div>
   </header>
 
   <main>
@@ -135,15 +180,16 @@
     </div>
   </main>
 
-  <footer>
-    <div class="wrap foot">
-      <a class="brand" href="/count/"><img src="/img/count-icon.png" alt="">Count</a>
+  <footer class="wrap">
+    <div class="rule-strong"></div>
+    <div class="foot">
+      <a class="brand" href="/count/"><img src="/img/count-icon.png?v=2" alt="">Count</a>
       <span class="foot-tag">Practice the count before it counts.</span>
       <nav aria-label="Footer">
         <a href="/count/privacy/">Privacy</a>
         <a href="/count/terms/">Terms</a>
-        <a href="mailto:hello@transcendfrontiers.com">Contact</a>
-        <a href="/">transcendfrontiers.com</a>
+        <a href="mailto:hello@transcendfrontiers.com">hello@transcendfrontiers.com</a>
+        <a href="/">Transcend Frontiers</a>
       </nav>
     </div>
   </footer>
