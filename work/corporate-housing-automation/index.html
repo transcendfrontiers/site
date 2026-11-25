@@ -371,6 +371,11 @@
     .ttable tfoot .actual td { background: var(--accent); color: #fff; }
     .ttable tfoot .actual td:nth-child(2) { color: rgba(255,255,255,.86); font-weight: 400; }
 
+    /* Bars fill left to right when scrolled into view; .is-armed only comes from JS */
+    .bars.is-armed .bar-fill { clip-path: inset(0 100% 0 0); transition: clip-path var(--dur, 2s) linear; }
+    .bars.is-armed .bar-val { opacity: 0; transition: opacity .8s ease; }
+    .bars.is-armed.is-run .bar-fill { clip-path: inset(0 0 0 0); }
+    .bars.is-armed.is-run .bar-val { opacity: 1; transition-delay: var(--dur, .4s); }
     .bars { margin-top: 40px; display: grid; gap: 14px; }
     .bar { display: grid; grid-template-columns: 170px 1fr; gap: 16px; align-items: center; font-size: 15px; }
     .bar-track { height: 34px; display: flex; align-items: center; gap: 10px; }
@@ -682,7 +687,7 @@
           <div class="bar fast"><span>With the agents</span><div class="bar-track"><div class="bar-fill" style="width:17%"></div><span class="bar-val">~11 h</span></div></div>
         </div>
 
-        <p class="method"><strong>How we measured.</strong> “Actual” comes from the timestamps in the session logs for every session of the outreach, from the first round through October 29. It counts the time the agent was working (7.9 hours) plus the time spent replying to it, answering questions or clearing CAPTCHAs (3.5 hours). Any pause longer than five minutes counts as a break and is left out. That works out to roughly 6× faster. In the first round, partner sites that need a new account and a verification step follow the same pattern: about 3.5 hours with the agents, measured the same way, against 10–15 by hand.</p>
+        <p class="method"><strong>How we measured.</strong> “Actual” comes from the timestamps in the session logs for every session of the outreach, from the first round to the last. It counts the time the agent was working (7.9 hours) plus the time spent replying to it, answering questions or clearing CAPTCHAs (3.5 hours). Any pause longer than five minutes counts as a break and is left out. That works out to roughly 6× faster. In the first round, partner sites that need a new account and a verification step follow the same pattern: about 3.5 hours with the agents, measured the same way, against 10–15 by hand.</p>
       </div>
     </section>
 
@@ -732,5 +737,35 @@
     </div>
   </footer>
 
+<script>
+  // Fill the time bars left to right at one shared speed, so the shorter bar finishes first.
+  (function () {
+    var bars = document.querySelector('.bars');
+    if (!bars || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var full = 5; // seconds for a 100% bar
+    bars.querySelectorAll('.bar').forEach(function (bar) {
+      var fill = bar.querySelector('.bar-fill');
+      var dur = (parseFloat(fill.style.width) || 100) / 100 * full;
+      bar.style.setProperty('--dur', dur.toFixed(2) + 's');
+    });
+    bars.classList.add('is-armed');
+    // Start only when the whole chart is on screen AND the tab is in front,
+    // so it never plays in a background tab or before the page is looked at.
+    var inView = false;
+    function start() {
+      if (!inView || document.hidden || bars.classList.contains('is-run')) return;
+      bars.classList.add('is-run');
+      io.disconnect();
+      document.removeEventListener('visibilitychange', start);
+    }
+    var io = new IntersectionObserver(function (entries) {
+      inView = entries[0].intersectionRatio >= 0.98;
+      start();
+    }, { threshold: [0, 0.98] });
+    io.observe(bars);
+    document.addEventListener('visibilitychange', start);
+  })();
+</script>
 </body>
 </html>

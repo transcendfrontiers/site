@@ -18,20 +18,20 @@
   <meta name="author" content="Transcend Frontiers" />
   <meta name="theme-color" content="#1e1815" />
 
-  <meta property="og:title" content="Transcend Frontiers | Websites, iOS Apps &amp; AI Automation for Small Businesses" />
+  <meta property="og:title" content="Transcend Frontiers | Websites, iOS Apps and AI Automation for Small Businesses" />
   <meta property="og:description" content="Transcend Frontiers is a small software studio building websites, native iOS apps, workflow automations and custom AI agents for small businesses. Makers of Halo, Current and Count." />
   <meta property="og:url" content="https://transcendfrontiers.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Transcend Frontiers" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="https://transcendfrontiers.com/img/website-preview-2400x1260.png" />
+  <meta property="og:image" content="https://transcendfrontiers.com/img/website-preview-2400x1260.png?v=2" />
   <meta property="og:image:width" content="2400" />
   <meta property="og:image:height" content="1260" />
   <meta property="og:image:alt" content="Transcend Frontiers: we build websites, apps and automations for small businesses" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://transcendfrontiers.com/img/website-preview-2400x1260.png" />
+  <meta name="twitter:image" content="https://transcendfrontiers.com/img/website-preview-2400x1260.png?v=2" />
   <meta name="twitter:image:alt" content="Transcend Frontiers: we build websites, apps and automations for small businesses" />
-  <meta name="twitter:title" content="Transcend Frontiers | Websites, iOS Apps &amp; AI Automation for Small Businesses" />
+  <meta name="twitter:title" content="Transcend Frontiers | Websites, iOS Apps and AI Automation for Small Businesses" />
   <meta name="twitter:description" content="Transcend Frontiers is a small software studio building websites, native iOS apps, workflow automations and custom AI agents for small businesses. Makers of Halo, Current and Count." />
   <link rel="alternate" type="text/plain" title="LLM summary" href="https://transcendfrontiers.com/llms.txt" />
 
@@ -351,11 +351,13 @@
     .hero-phones img {
       position: absolute;
       width: 62%;
-      border-radius: 28px;
-      box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+      border: 9px solid var(--frame);
+      background: var(--frame);
+      border-radius: 52px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 30px 60px -20px rgba(0,0,0,.6);
     }
-    .hero-phones img:first-child { right: 30%; bottom: -22%; transform: rotate(-5deg); }
-    .hero-phones img:last-child  { right: -4%; bottom: -8%;  transform: rotate(4deg); }
+    .hero-phones img:first-child { --frame: #1d1d1d; right: 30%; bottom: -22%; transform: rotate(-5deg); }
+    .hero-phones img:last-child  { --frame: #2a2825; right: -4%; bottom: -8%;  transform: rotate(4deg); }
 
     .hero-note {
       display: flex;
@@ -547,6 +549,29 @@
     }
     .flow-tag svg { width: 15px; height: 15px; flex-shrink: 0; }
     .auto .flow-tag { color: rgba(255,255,255,.78); }
+    /* Live run: once the list scrolls into view, each step completes in order.
+       .is-armed is only added by JS, so without JS (or with reduced motion) the section shows as before. */
+    .flow-step::after {
+      content: '';
+      position: absolute;
+      left: 19.5px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    .flow-step:first-child::after { top: var(--dot); }
+    .flow-step:last-child::after { bottom: calc(100% - var(--dot)); }
+    .flow.is-armed .flow-step::after { transition: transform 1.2s linear; }
+    .flow.is-armed .flow-step.is-done::after { transform: scaleY(1); }
+    .flow.is-armed .flow-n { transition: background-color .5s ease .2s, border-color .5s ease .2s, color .5s ease .2s; }
+    .flow.is-armed .flow-step.is-done .flow-n { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .flow.is-armed .flow-cell.auto { background: #f4e8ea; border-color: #e8d2d6; color: var(--accent); transition: background-color .7s ease .3s, border-color .7s ease .3s, color .7s ease .3s; }
+    .flow.is-armed .flow-cell.auto .flow-tag { color: inherit; transition: color .7s ease .3s; }
+    .flow.is-armed .flow-step.is-done .flow-cell.auto { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .flow.is-armed .flow-step.is-done .flow-cell.auto .flow-tag { color: rgba(255,255,255,.78); }
     .flow-total {
       margin: 12px 0 clamp(40px, 5vw, 64px);
       padding-top: 24px;
@@ -605,6 +630,9 @@
       text-decoration: none;
       box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 24px 40px -24px rgba(30,24,21,.35);
       transition: transform .35s cubic-bezier(.2,.7,.2,1);
+      /* own compositing layer: stops Firefox drawing stray seam lines across the rotated cards */
+      will-change: transform;
+      backface-visibility: hidden;
     }
     .app + .app { margin-left: -24px; }
     .app:nth-child(1) { transform: rotate(-7deg) translateY(26px); z-index: 1; }
@@ -625,7 +653,9 @@
     }
     .app-shot img {
       width: 58%;
-      border-radius: 22px;
+      border: 5px solid var(--frame, #1d1d1d);
+      background: var(--frame, #1d1d1d);
+      border-radius: 27px;
       box-shadow: 0 10px 30px -10px rgba(0,0,0,.25);
     }
     .app h3 {
@@ -638,14 +668,13 @@
     }
     .app p { font-size: 15px; margin: 0 10px; opacity: .8; }
 
-    .app-halo    { background: #ebe4fc; color: #2a1f4d; }
-    .app-current { background: #efdcc6; color: #4a2a18; }
+    .app-halo    { background: #ebe4fc; color: #2a1f4d; --frame: #2a1f4d; }
+    .app-current { background: #efdcc6; color: #4a2a18; --frame: #2a2825; }
     .app-count   { background: #f2f2f2; color: #000; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1), 0 1px 0 rgba(0,0,0,.04), 0 24px 40px -24px rgba(30,24,21,.35); }
     .app-count .app-shot { background: #fff; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); }
-    .app-count .app-shot img { border: 5px solid #1d1d1d; border-radius: 27px; }
     .app-fabric  { background: #24221f; color: var(--on-dark); }
     .app-fabric .app-shot { background: #f8f2f1; align-items: center; padding: 0 22px; }
-    .app-fabric .app-shot img { width: 100%; border-radius: 8px; }
+    .app-fabric .app-shot img { width: 100%; border: 0; background: none; border-radius: 8px; }
 
 
     /* app index under the fan */
@@ -755,7 +784,7 @@
       }
       .hero-phones img,
       .hero-phones img:first-child,
-      .hero-phones img:last-child { position: static; width: min(40%, 210px); }
+      .hero-phones img:last-child { position: static; width: min(40%, 210px); border-width: 6px; border-radius: 34px; }
       .hero-phones img:first-child { margin-top: 40px; margin-right: -24px; }
       .custom { flex-direction: column; align-items: flex-start; }
       .flow { --dot: 20px; }
@@ -832,7 +861,7 @@
           </a>
         </div>
         <div class="hero-phones" aria-hidden="true">
-          <img src="img/count/iphone-17-pro_setup.png" alt="" loading="eager">
+          <img src="img/count/iphone-17-pro_setup.png?v=2" alt="" loading="eager">
           <img src="img/current/iphone-17-pro_today.png" alt="" loading="eager">
         </div>
       </div>
@@ -1012,7 +1041,7 @@
             <p>Somatic check-ins · iOS</p>
           </a>
           <a class="app app-count" href="/count/">
-            <div class="app-shot"><img src="img/count/iphone-17-pro_setup.png" alt="Count setup screen with Hi-Lo tags, a six-deck shoe and a pace ruler" loading="lazy"></div>
+            <div class="app-shot"><img src="img/count/iphone-17-pro_setup.png?v=2" alt="Count setup screen with Hi-Lo tags, a six-deck shoe and a pace ruler" loading="lazy"></div>
             <h3>Count</h3>
             <p>Card counting drills · iOS</p>
           </a>
@@ -1116,5 +1145,23 @@
     </div>
   </footer>
 
+<script>
+  // Live run for the before/after steps: fill each circle, its line and its automated card in order.
+  (function () {
+    var flow = document.querySelector('.flow');
+    if (!flow || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var steps = flow.querySelectorAll('.flow-step');
+    flow.classList.add('is-armed');
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      steps.forEach(function (step, i) {
+        setTimeout(function () { step.classList.add('is-done'); }, 400 + i * 1200);
+      });
+    }, { threshold: 0.3 });
+    io.observe(flow);
+  })();
+</script>
 </body>
 </html>

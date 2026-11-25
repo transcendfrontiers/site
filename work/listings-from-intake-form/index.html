@@ -360,6 +360,11 @@
     .ttable tfoot .actual td { background: var(--accent); color: #fff; }
     .ttable tfoot .actual td:nth-child(2) { color: rgba(255,255,255,.86); font-weight: 400; }
 
+    /* Bars fill left to right when scrolled into view; .is-armed only comes from JS */
+    .bars.is-armed .bar-fill { clip-path: inset(0 100% 0 0); transition: clip-path var(--dur, 2s) linear; }
+    .bars.is-armed .bar-val { opacity: 0; transition: opacity .8s ease; }
+    .bars.is-armed.is-run .bar-fill { clip-path: inset(0 0 0 0); }
+    .bars.is-armed.is-run .bar-val { opacity: 1; transition-delay: var(--dur, .4s); }
     .bars { margin-top: 40px; display: grid; gap: 14px; }
     .bar { display: grid; grid-template-columns: 170px 1fr; gap: 16px; align-items: center; font-size: 15px; }
     .bar-track { height: 34px; display: flex; align-items: center; gap: 10px; }
@@ -725,5 +730,35 @@
     </div>
   </footer>
 
+<script>
+  // Fill the time bars left to right at one shared speed, so the shorter bar finishes first.
+  (function () {
+    var bars = document.querySelector('.bars');
+    if (!bars || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var full = 5; // seconds for a 100% bar
+    bars.querySelectorAll('.bar').forEach(function (bar) {
+      var fill = bar.querySelector('.bar-fill');
+      var dur = (parseFloat(fill.style.width) || 100) / 100 * full;
+      bar.style.setProperty('--dur', dur.toFixed(2) + 's');
+    });
+    bars.classList.add('is-armed');
+    // Start only when the whole chart is on screen AND the tab is in front,
+    // so it never plays in a background tab or before the page is looked at.
+    var inView = false;
+    function start() {
+      if (!inView || document.hidden || bars.classList.contains('is-run')) return;
+      bars.classList.add('is-run');
+      io.disconnect();
+      document.removeEventListener('visibilitychange', start);
+    }
+    var io = new IntersectionObserver(function (entries) {
+      inView = entries[0].intersectionRatio >= 0.98;
+      start();
+    }, { threshold: [0, 0.98] });
+    io.observe(bars);
+    document.addEventListener('visibilitychange', start);
+  })();
+</script>
 </body>
 </html>
