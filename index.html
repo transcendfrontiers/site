@@ -359,30 +359,6 @@
     .hero-phones img:first-child { --frame: #1d1d1d; right: 30%; bottom: -22%; transform: rotate(-5deg); }
     .hero-phones img:last-child  { --frame: #2a2825; right: -4%; bottom: -8%;  transform: rotate(4deg); }
 
-    .hero-note {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-top: clamp(40px, 6vw, 72px);
-      padding: 14px 16px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 12px;
-      max-width: 440px;
-      text-decoration: none;
-      transition: background .15s;
-    }
-    .hero-note:hover { background: rgba(255,255,255,.12); }
-    .hero-note img { width: 44px; height: 44px; border-radius: 10px; }
-    .hero-note small {
-      display: block;
-      font-size: 12px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--on-dark-2);
-    }
-    .hero-note span { font-size: 15px; }
-
     /* ── Sections ── */
     section { padding: clamp(80px, 11vw, 140px) 0; }
     .sec-head { margin-bottom: clamp(48px, 6vw, 80px); }
@@ -852,13 +828,6 @@
             <a class="btn btn-accent" href="#contact">Start a project</a>
             <a class="btn btn-line" href="#services">Our services</a>
           </div>
-          <a class="hero-note" href="/current/">
-            <img src="img/current-icon.png" alt="">
-            <div>
-              <small>New on the App Store</small>
-              <span>Current, a quick daily check-in app for iPhone</span>
-            </div>
-          </a>
         </div>
         <div class="hero-phones" aria-hidden="true">
           <img src="img/count/iphone-17-pro_setup.png?v=2" alt="" loading="eager">
