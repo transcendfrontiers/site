@@ -1153,14 +1153,24 @@
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var steps = flow.querySelectorAll('.flow-step');
     flow.classList.add('is-armed');
-    var io = new IntersectionObserver(function (entries) {
-      if (!entries[0].isIntersecting) return;
+    // Start only when the list is on screen AND the tab is in front,
+    // so it never plays in a background tab before anyone looks at it.
+    var inView = false, started = false;
+    function start() {
+      if (!inView || document.hidden || started) return;
+      started = true;
       io.disconnect();
+      document.removeEventListener('visibilitychange', start);
       steps.forEach(function (step, i) {
         setTimeout(function () { step.classList.add('is-done'); }, 400 + i * 1200);
       });
-    }, { threshold: 0.3 });
+    }
+    var io = new IntersectionObserver(function (entries) {
+      inView = entries[0].intersectionRatio >= 0.3;
+      start();
+    }, { threshold: [0, 0.3] });
     io.observe(flow);
+    document.addEventListener('visibilitychange', start);
   })();
 </script>
 </body>
