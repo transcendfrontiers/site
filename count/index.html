@@ -219,6 +219,7 @@
     .label { display: block; font-size: 15px; font-weight: 500; color: var(--ink-2); margin-bottom: 14px; }
     .sub { font-size: 18px; line-height: 1.5; color: var(--text); max-width: 540px; }
     .pos { color: var(--pos); } .neg { color: var(--neg); }
+    .chip { display: inline-block; padding: 5px 7px; font-size: 13px; line-height: 1; color: var(--ink); border: 1px solid var(--rule); border-radius: var(--radius); white-space: nowrap; }
 
     /* Buttons: tight rectangles, solid ink or ink outline */
     .btn {
@@ -500,7 +501,7 @@
 
     <div class="wrap hero">
       <div class="hero-copy">
-        <span class="label" style="margin:0">Blackjack card counting trainer for iPhone</span>
+        <span class="label" style="margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px">Blackjack card counting trainer for iPhone <span class="chip">App redesign coming soon</span></span>
         <h1>Keep the count.<br>Then check it.</h1>
         <p class="sub">Count deals a shoe on a timer while you keep the running count in your head. Stop whenever you like, give your answer and see if you were right.</p>
         <div class="hero-cta">
